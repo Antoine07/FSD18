@@ -611,7 +611,7 @@ Les fonctions déclarées sont définies dès le début du script ou de la fonct
 Les expressions de fonction sont définies après leur évaluation.
 
 
-### 05_bis 
+### 05_bis Exercice function & expression
 
 Est ce que le code suivant produit une erreur ? Ne testez pas le code, répondez simplement
 
