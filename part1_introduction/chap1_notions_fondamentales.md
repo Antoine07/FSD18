@@ -613,7 +613,7 @@ Les expressions de fonction sont définies après leur évaluation.
 
 ### 05_bis Exercice function & expression
 
-Est ce que le code suivant produit une erreur ? Ne testez pas le code, répondez simplement
+1. Est ce que le code suivant produit une erreur ? Ne testez pas le code, répondez simplement
 
 ```js
 bar();
@@ -624,6 +624,22 @@ const myFunc = function(){
       // ...
     }
   }
+```
+
+2. Est ce que le code suivant est valide ? Si oui qu'affiche-t-il ?
+
+```js
+const myFunc = function () {
+
+  bar();
+  function bar() {
+    console.log("hello")
+  }
+};
+
+
+myFunc();
+
 ```
 
 ### 06 Exercice déclaration
