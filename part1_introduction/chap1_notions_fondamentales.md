@@ -589,6 +589,10 @@ school_02 = {
 school_02.set("Sophie");
 ```
 
+### 04 Exercice contexte correction 
+
+La méthode set est appelée dans le contexte de school_02 et donc "Sophie" sera dans le tableau de school_02.
+
 ### 05 Exercice function & expression
 
 Nommez les types de fonction ci-dessous :
@@ -605,6 +609,22 @@ const myFunc = function(){
 Les fonctions déclarées sont définies dès le début du script ou de la fonction qui la contient.
 
 Les expressions de fonction sont définies après leur évaluation.
+
+
+### 05_bis 
+
+Est ce que le code suivant produit une erreur ? Ne testez pas le code, répondez simplement
+
+```js
+bar();
+
+const myFunc = function(){
+
+    function bar(){
+      // ...
+    }
+  }
+```
 
 ### 06 Exercice déclaration
 
