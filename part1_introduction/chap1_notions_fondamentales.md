@@ -615,6 +615,8 @@ Les expressions de fonction sont définies après leur évaluation.
 
 1. Est ce que le code suivant produit une erreur ? Ne testez pas le code, répondez simplement
 
+**CORRECTION : oui car bar n'est pas définie, la fonction se trouve dans le scope de l'expression de fonction.**
+
 ```js
 bar();
 
@@ -639,7 +641,6 @@ const myFunc = function () {
 
 
 myFunc();
-
 ```
 
 ### 06 Exercice déclaration
