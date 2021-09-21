@@ -406,7 +406,7 @@ add(10, 0); // affiche 10
 
 ```
 
-### Exercice ttc
+### 01 Exercice ttc
 
 1. Créez une fonction qui permet de calculer un prix TTC connaissant un prix HT. Donnez une valeur de 20% par défaut pour la TVA.
 
@@ -416,7 +416,7 @@ add(10, 0); // affiche 10
 
 // 1.
 ttc(100, 0.2); // 120
-ttc(100.50, 0.2); // 144.72
+ttc(100.50, 0.2); // 120.6
 
 // 2.
 // Gestion du type
@@ -425,9 +425,9 @@ ttc(100.50, "hello"); // Erreur de type
 ttc("100", ".3"); // 130
 ```
 
-## Syntaxe par décomposition
+## Syntaxe par décomposition/déballage ou unpacking
 
-Si vous avez une fonction avec de nombreux paramètres ou des paramètres variables, utilisez le spread operator pour passer les valeurs à la fonction :
+Si vous avez une fonction avec de nombreux paramètres ou des paramètres variables, utilisez le **spread operator** pour passer les valeurs à la fonction :
 
 ```js
 function sum(x, y, z) {
@@ -435,11 +435,12 @@ function sum(x, y, z) {
 }
 
 let numbers = [1, 2, 3];
+sum(numbers[0], numbers[1], numbers[2]);
 
 sum(...numbers); // sum(1, 2, 3) unpacking
 ```
 
-### Exercice sum spread TTC
+### 02 Exercice sum spread TTC
 
 Ecrivez une fonction **sumTTC** qui prend 3 nombres arbitraires de prix HT et retourne la somme de ces prix TTC. La TVA est  un paramètre facultatif (20%).
 Vérifiez que le type des variables passées en paramètre ne posent pas de problème, utilisez **parseFloat**. Affichez les résultats avec au plus 2 chiffres après la virgule.
@@ -497,6 +498,8 @@ const o2 = {
 
 console.log(o2.f2()) ; // this de o2
 
+--- HORS PROGRAMME A LIRE PLUS TARD
+
 const o3 = o1.f1;
 
 console.log(o3()) ; // undefined car on n'appelle la fonction f1 explicitement
@@ -514,6 +517,8 @@ Pour corriger ce problème il faut écrire :
 
 ```js
 setTimeout(() => o1.f1() , 1000); // ici setTimeout appel la fonction f1.
+
+--- HORS PROGRAMME A LIRE PLUS TARD
 ```
 
 ## Fonction & fonction fléchée
