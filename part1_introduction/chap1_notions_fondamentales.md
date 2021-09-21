@@ -541,7 +541,55 @@ setTimeout( function (){
 })
 ```
 
-### Exercice function & expression
+### Exercice avec correction (lire les remarques)
+
+Est ce le code suivant pose un problème à JS, c'est-à-dire provoque une erreur. Si oui expliquez pourquoi ?
+
+Répondez sans executer le code 
+
+```js
+*/
+const PRECISION = 100;
+console.log(average([11, 12, 19, 20]));
+
+// Les fonction déclarée sont compilées en premier donc vous pouvez les appeler avant de les définir
+function average(notes) {
+  if (notes.length > 0) {
+    let sum = 0;
+    for (const note of notes) {
+      sum += note;
+    }
+
+    return Math.floor((sum / notes.length) * PRECISION) / PRECISION;
+  }
+
+  return null;
+}
+
+```
+
+### 04 Exercice contexte
+
+Dire sans coder l'exemple suivant où Sophie va se trouver (dans quel objet ou contexte) ?
+
+```js
+school_01 = {
+    students : [],
+    set : function(name){
+        this.students.push(name)
+    }
+}
+
+school_02 = {
+    students : [],
+    set : school_01.set
+
+}
+
+school_02.set("Sophie");
+```
+
+### 05 Exercice function & expression
 
 Nommez les types de fonction ci-dessous :
 
@@ -558,7 +606,7 @@ Les fonctions déclarées sont définies dès le début du script ou de la fonct
 
 Les expressions de fonction sont définies après leur évaluation.
 
-### Exercice déclaration
+### 06 Exercice déclaration
 
 *Sans exécuter le code.* 
 
@@ -582,40 +630,6 @@ const myFunc = function(){
 }
 ```
 
-### Arguments d'une fonction
-
-Vous n'êtes pas obligé de renseigner le nombre d'argument(s) d'une fonction en JS. La fonction possède en interne une propriété **arguments** qui récupère les paramètres de la fonction, attention arguments n'est pas un tableau :
-
-```js
-function sum(){
-  let total = 0;
-  for(let i =0; i < arguments.length; ++i ) total += arguments[i];
-
-  return total;
-}
-
-console.log(sum(1,2,3,4, 5, 6));
-```
-
-L'objet arguments peut-être converti en tableau à l'aide de la méthode from de l'objet Array :
-
-```js
-const args = Array.from(arguments);
-
-```
-
-On peut par exemple définir la fonction sum en utilisant la méthode from :
-
-```js
-function sum(){
-  const args = Array.from(arguments);
-  
-  return args.reduce( (acc, curr) => acc + curr );
-}
-
-console.log( sum(1,2,3,5) ); // 11
-
-```
 
 ### Les fonctions fléchées
 
@@ -649,6 +663,23 @@ const model2 = (x, y) => {
     return { x : x, y : y }
 }
 ```
+
+### 07 Exercice puissance 3
+
+Soit numbers une liste de nombres entiers, élevez uniquement à la puissance 3 les nombres pairs. Utilisez une fonction flèchée pour cette question.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+```
+
+*Indications : pour calculer une puissance utilisez l'opérateur suivant*
+
+```js
+// opérateur puissance
+2**3 // 8
+```
+
+## Le contexte des fonctions fléchées
 
 Contrairement aux fonctions classiques, les fonctions fléchées ne re-définissent pas de this. Si vous vous référez dans une fonction fléchée au mot clé this, la fonction fléchée **récupérera le this du contexte** dans lequel elle a été définie.
 
