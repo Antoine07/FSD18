@@ -61,7 +61,6 @@ On distingue les types suivants en Javascript. Attention, tous les types primiti
 - boolean
 
 ```js
-
 // On ne peut pas modifier un "true" ...
 let flag = true;
 ```
@@ -95,8 +94,7 @@ let message = "Hello World";
 
 - symbole (type introduit à partir de la norme ES6, que nous n'aborderons pas dans ce cours).
 
-
-------
+---
 
 ### 2. Les types Objects
 
@@ -108,7 +106,6 @@ Dans la liste des objets vous avez :
 
 ```js
 class Model {
-
   constructor(name) {
     this.name = name;
   }
@@ -143,7 +140,7 @@ let notes = [1, 2, 3];
 let newNotes = new Array(1, 2, 4);
 ```
 
-Un Map est une simple collection de clés/valeurs. 
+Un Map est une simple collection de clés/valeurs.
 
 ```js
 // création d'un Map
@@ -167,10 +164,9 @@ console.log(ensemble);
 Définition let :
 **La variable définie avec let a une portée scopée au niveau du bloc dans lequel elle a été déclarée.**
 
-*Remarque importante : lorsque vous définissez une variable à l'intérieur d'une fonction elle est scopée (portée) dans la fonction elle-même; elle n'a pas d'effet de bord avec le reste du script.*
+_Remarque importante : lorsque vous définissez une variable à l'intérieur d'une fonction elle est scopée (portée) dans la fonction elle-même; elle n'a pas d'effet de bord avec le reste du script._
 
 ```js
-
 function foo() {
   let a = 10;
   console.log(a); // affiche 10
@@ -189,7 +185,7 @@ let a = 11;
 
 function foo() {
   let a = 10;
-  console.log(a); 
+  console.log(a);
 }
 
 // affiche 10
@@ -217,7 +213,6 @@ function baz() {
 
 // affiche 11 9
 baz();
-
 ```
 
 Un autre exemple :
@@ -245,7 +240,6 @@ baz();
 Est ce que le code qui suit vous semble correcte ? Répondre sans exécuter le code. Si ce dernier n'est pas valide modifiez-le afin qu'il puisse s'exécuter correctement.
 
 ```js
-
 let a = 1;
 
 function calcul() {
@@ -263,7 +257,6 @@ function calcul() {
 }
 
 calcul();
-
 ```
 
 ## Exercice TDZ (temporal dead zone) (sans coder)
@@ -318,7 +311,6 @@ console.log(API_KEY);
 Une constante peut contenir tous types de variable. Dans le cas d'un objet comme un tableau par exemple, les valeurs du tableau sont modifiables. En effet, une constante bloque la ré-assignation de la variable, mais ne rend pas l'objet non-modifiable.
 
 ```js
-
 const STUDENTS = ["Alan", "Bernard", "Jean"];
 
 STUDENTS.push("Sophie");
@@ -330,7 +322,6 @@ STUDENTS.pop();
 
 console.log(STUDENTS);
 // ["Alan", "Bernard", "Jean"]
-
 ```
 
 Par contre ce qui suit est impossible, l'erreur suivante sera levée :
@@ -356,7 +347,6 @@ for (const j = 0; j < 10; j++) {}
 const STUDENTS = ["Alan", "Bernard", "Jean"];
 ```
 
-
 ### var définition
 
 **Ce mot clé pour définir une variable ne doit plus être utilisé, utilisez let à la place.**
@@ -367,10 +357,10 @@ Il permet de définir une variable globale ou locale à une fonction sans distin
 function foo() {
   var x = 10; // portée fonction pas bloc comme let
   if (true) {
-    var x = 2;  // c'est la même variable !
-    console.log(x);  // 2
+    var x = 2; // c'est la même variable !
+    console.log(x); // 2
   }
-  console.log(x);  // 2
+  console.log(x); // 2
 }
 foo(); // 2 2
 ```
@@ -381,10 +371,10 @@ Par comparaison avec le mot clé let :
 function bar() {
   let x = 10; // portée fonction pas bloc comme let
   if (true) {
-    let x = 2;  // c'est la même variable !
-    console.log(x);  // 2
+    let x = 2; // c'est la même variable !
+    console.log(x); // 2
   }
-  console.log(x);  // 10
+  console.log(x); // 10
 }
 bar(); //  2 10
 ```
@@ -403,25 +393,23 @@ function add(a, sup = 1) {
 add(10); // affiche 11
 
 add(10, 0); // affiche 10
-
 ```
 
 ### 01 Exercice ttc
 
 1. Créez une fonction qui permet de calculer un prix TTC connaissant un prix HT. Donnez une valeur de 20% par défaut pour la TVA.
 
-2. Vérifiez que le type des variables passées en paramètre ne posent pas de problème. Utilisez **parseFloat** pour la vérification des types. Affichez les résultats avec au plus 2 chiffres après la virgule. 
+2. Vérifiez que le type des variables passées en paramètre ne posent pas de problème. Utilisez **parseFloat** pour la vérification des types. Affichez les résultats avec au plus 2 chiffres après la virgule.
 
 ```js
-
 // 1.
 ttc(100, 0.2); // 120
-ttc(100.50, 0.2); // 120.6
+ttc(100.5, 0.2); // 120.6
 
 // 2.
 // Gestion du type
 ttc("hello", 0.2); // Erreur de type
-ttc(100.50, "hello"); // Erreur de type
+ttc(100.5, "hello"); // Erreur de type
 ttc("100", ".3"); // 130
 ```
 
@@ -442,7 +430,7 @@ sum(...numbers); // sum(1, 2, 3) unpacking
 
 ### 02 Exercice sum spread TTC
 
-Ecrivez une fonction **sumTTC** qui prend 3 nombres arbitraires de prix HT et retourne la somme de ces prix TTC. La TVA est  un paramètre facultatif (20%).
+Ecrivez une fonction **sumTTC** qui prend 3 nombres arbitraires de prix HT et retourne la somme de ces prix TTC. La TVA est un paramètre facultatif (20%).
 Vérifiez que le type des variables passées en paramètre ne posent pas de problème, utilisez **parseFloat**. Affichez les résultats avec au plus 2 chiffres après la virgule.
 
 Les prix HT seront donnés dans un tableau :
@@ -451,11 +439,11 @@ Les prix HT seront donnés dans un tableau :
 const pricesHT = [100, 200, 55];
 
 console.log(sumTTC(...priceHT));
-console.log(sumTTC(...priceHT, .3));
+console.log(sumTTC(...priceHT, 0.3));
 
 // vérifiez le type des variables
-const badPriceHT = [100.50, "hello", 55.7];
-console.log(sumTTC(...badPriceHT, .3));
+const badPriceHT = [100.5, "hello", 55.7];
+console.log(sumTTC(...badPriceHT, 0.3));
 ```
 
 ### littéral pour définir des paramètres
@@ -463,13 +451,12 @@ console.log(sumTTC(...badPriceHT, .3));
 Vous pouvez utiliser la syntaxe suivante pour définir les paramètres d'une fonction. Dans ce cas vous n'avez pas à vous soucier de l'ordre des paramètres passé à la fonction.
 
 ```js
-function baz({ a, b }){ 
-  console.log(a, b ) 
+function baz({ a, b }) {
+  console.log(a, b);
 }
 
-baz({ a: 1, b : 2}); // 1 2
-baz({ b: 2, a : 1}); // 1 2
-
+baz({ a: 1, b: 2 }); // 1 2
+baz({ b: 2, a: 1 }); // 1 2
 ```
 
 ## Le point sur le this des objets
@@ -508,7 +495,7 @@ console.log(o3()) ; // undefined car on n'appelle la fonction f1 explicitement
 De même, faites attention dans les fonctions de callback. Dans l'exemple qui suit setTimeout fera appel à la fonction sans reprendre le context de l'objet lui-même, this sera, en mode strict, undefined :
 
 ```js
-'use strict';
+"use strict";
 
 setTimeout(o1.f1, 1000); // ici setTimeout appel la fonction f1.
 ```
@@ -528,24 +515,20 @@ En JS vous avez des fonctions déclarées et des expressions de fonction.
 - fonction déclarée :
 
 ```js
-function foo(){
-
-}
+function foo() {}
 ```
 
 - Expression de fonction
 
 ```js
-setTimeout( function (){
-
-})
+setTimeout(function () {});
 ```
 
 ### Exercice avec correction (lire les remarques)
 
 Est ce le code suivant pose un problème à JS, c'est-à-dire provoque une erreur. Si oui expliquez pourquoi ?
 
-Répondez sans executer le code 
+Répondez sans executer le code
 
 ```js
 */
@@ -574,22 +557,21 @@ Dire sans coder l'exemple suivant où Sophie va se trouver (dans quel objet ou c
 
 ```js
 school_01 = {
-    students : [],
-    set : function(name){
-        this.students.push(name)
-    }
-}
+  students: [],
+  set: function (name) {
+    this.students.push(name);
+  },
+};
 
 school_02 = {
-    students : [],
-    set : school_01.set
-
-}
+  students: [],
+  set: school_01.set,
+};
 
 school_02.set("Sophie");
 ```
 
-### 04 Exercice contexte correction 
+### 04 Exercice contexte correction
 
 La méthode set est appelée dans le contexte de school_02 et donc "Sophie" sera dans le tableau de school_02.
 
@@ -598,18 +580,16 @@ La méthode set est appelée dans le contexte de school_02 et donc "Sophie" sera
 Nommez les types de fonction ci-dessous :
 
 ```js
-const myFunc = function(){
-
-  function bar(){
+const myFunc = function () {
+  function bar() {
     // ...
   }
-}
+};
 ```
 
 Les fonctions déclarées sont définies dès le début du script ou de la fonction qui la contient.
 
 Les expressions de fonction sont définies après leur évaluation.
-
 
 ### 05_bis Exercice function & expression
 
@@ -620,12 +600,11 @@ Les expressions de fonction sont définies après leur évaluation.
 ```js
 bar();
 
-const myFunc = function(){
-
-    function bar(){
-      // ...
-    }
+const myFunc = function () {
+  function bar() {
+    // ...
   }
+};
 ```
 
 2. Est ce que le code suivant est valide ? Si oui qu'affiche-t-il ?
@@ -634,13 +613,11 @@ const myFunc = function(){
 
 ```js
 const myFunc = function () {
-
   bar();
   function bar() {
-    console.log("hello")
+    console.log("hello");
   }
 };
-
 
 myFunc();
 ```
@@ -649,17 +626,15 @@ myFunc();
 
 **CORRECTION : Non valide, car bar n'est pas dans le même scope donc non défini.**
 
-```js 
+```js
 bar();
 
 const myFunc = function () {
-
   // DANS UN SCOPE
   function bar() {
-    console.log("hello")
+    console.log("hello");
   }
 };
-
 
 myFunc();
 ```
@@ -668,9 +643,8 @@ De même si on appelle la fonction après elle n'est pas dans le même scope, do
 
 ```js
 const myFunc = function () {
-
   function bar() {
-    console.log("hello")
+    console.log("hello");
   }
 };
 
@@ -680,7 +654,7 @@ bar(); // ERREUR NO DEF
 
 ### 06 Exercice déclaration
 
-*Sans exécuter le code.* 
+_Sans exécuter le code._
 
 1. Le code suivant est-il valide ?
 
@@ -689,7 +663,7 @@ bar(); // ERREUR NO DEF
 ```js
 bar();
 
-function bar(){
+function bar() {
   console.log("bar");
 }
 ```
@@ -699,11 +673,11 @@ function bar(){
 **CORRECTION : non on ne peut pas appeler une expression de fonction avant de l'avoir définie.**
 
 ```js
-myFunc(); 
+myFunc();
 
-const myFunc = function(){
-    console.log("Expression");
-}
+const myFunc = function () {
+  console.log("Expression");
+};
 ```
 
 ### Les fonctions fléchées
@@ -712,10 +686,10 @@ Les fonctions fléchées (arrow function) permettent d'avoir une syntaxe plus co
 
 ```js
 const power2 = (x) => {
-  return x ** 2 ;
+  return x ** 2;
 };
 const numbers = [1, 2, 5];
-console.log(numbers.map( power2 ));
+console.log(numbers.map(power2));
 // [1, 4, 25]
 ```
 
@@ -723,20 +697,20 @@ Si vous ne retournez qu'une seule valeur, vous pouvez écrire la syntaxe suivant
 
 ```js
 // syntaxe consise
-const sum = (x, y) => x + y ;
+const sum = (x, y) => x + y;
 ```
 
 Dans le cas où vous souhaiteriez retourner un unique littéral, utilisez la syntaxe suivante (expression) :
 
 ```js
 // syntaxe consise
-const model = (x, y) => ({ x, y }) ;
-console.log(model(1,2)); // retournera { x : 1, y : 2 }
+const model = (x, y) => ({ x, y });
+console.log(model(1, 2)); // retournera { x : 1, y : 2 }
 
 // Une syntaxe plus longue mais équivalente
-const model2 = (x, y) => { 
-    return { x : x, y : y }
-}
+const model2 = (x, y) => {
+  return { x: x, y: y };
+};
 ```
 
 ### 07 Exercice puissance 3
@@ -749,14 +723,26 @@ const model2 = (x, y) => {
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 ```
 
-*Indications : pour calculer une puissance utilisez l'opérateur suivant*
+_Indications : pour calculer une puissance utilisez l'opérateur suivant_
 
 ```js
 // opérateur puissance
-2**3 // 8
+2 ** 3; // 8
 ```
 
+### 08 Exercice map fonction sur un tableau
 
+La fonction map est une méthode qui s'applique au tableau. Elle retourne un tableau de même dimension que le tableau parcouru, on lui passe une fonction déclarée ou fléchée, cette fonction possède deux paramètres un obligatoire et l'autre facultatif.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const newNumbers = numbers.map((num, i) => {
+  return num ** 2;
+});
+```
+
+1. Multipliez pas 100 les nombres qui sont divisible par 3 en utilisant la fonction map.
 
 ## Le contexte des fonctions fléchées
 
@@ -764,25 +750,25 @@ Contrairement aux fonctions classiques, les fonctions fléchées ne re-définiss
 
 ```js
 const School = {
-    name: "Alan",
-    sayHello() {
-        // récupérer le this du context
-        const that = this;
-        function getName() {
-            console.log(that.name); // Alan
-            console.log(this.name); // undefined
-        }
-        getName();
-    },
-
-    sayHelloArrowFunc(){
-        // La fonction fléchée récupère le context de l'objet courant School
-        let func = () => {
-            console.log(this.name); // Alan
-        }
-        func();
+  name: "Alan",
+  sayHello() {
+    // récupérer le this du context
+    const that = this;
+    function getName() {
+      console.log(that.name); // Alan
+      console.log(this.name); // undefined
     }
-}
+    getName();
+  },
+
+  sayHelloArrowFunc() {
+    // La fonction fléchée récupère le context de l'objet courant School
+    let func = () => {
+      console.log(this.name); // Alan
+    };
+    func();
+  },
+};
 School.sayHello();
 School.sayHelloArrowFunc();
 ```
@@ -790,8 +776,7 @@ School.sayHelloArrowFunc();
 Une fonction classique peut définir un constructeur, **pas une fonction flèchée**. Par convention le nom de la fonction commencera par une majuscule :
 
 ```js
-
-function User(name){
+function User(name) {
   // constructeur
   this.name = name;
 
@@ -801,7 +786,7 @@ function User(name){
 const u1 = new user("Alan");
 const u2 = new user("Alan");
 
-// Le code qui suit produira une erreur 
+// Le code qui suit produira une erreur
 // pas de constructeur dans ce cas
 /*const userArrow = name => {
   this.name = name;
@@ -817,33 +802,32 @@ const uA2 = new userArrow("Alan");
 Remarque : si vous appelez la fonction constructeur comme une fonction classique, alors le this sera de type "undefined" en mode strict.
 
 ```js
-'use strict';
+"use strict";
 
-function User(name){
+function User(name) {
   console.log(this);
   this.name = name;
 }
 
-User('Alan'); // this undefined
+User("Alan"); // this undefined
 ```
 
 Lorsque vous définissez une méthode dans un objet littéral, le this est l'objet littéral lui-même.
 
 ```js
-
 const Model = {
-    table : "Model",
+  table: "Model",
 
-    subModel:function(){
-        console.log(this); // Objet model
-    },
+  subModel: function () {
+    console.log(this); // Objet model
+  },
 
-    // de manière totalement équivalente vous pour écrire ceci
-    // pour définir une méthode/fonction
-    subModel2(){
-      console.log(this); // Objet model
-    }
-}
+  // de manière totalement équivalente vous pour écrire ceci
+  // pour définir une méthode/fonction
+  subModel2() {
+    console.log(this); // Objet model
+  },
+};
 
 Model.subModel(); // this objet Model
 ```
@@ -854,32 +838,31 @@ Comment éviter l'effet de bord sur la propriété this (undefined) dans le code
 
 ```js
 const log = {
-    count : 100,
-    save: function () {
-        'use strict';
-        console.log(this.count);
-    }
-}
+  count: 100,
+  save: function () {
+    "use strict";
+    console.log(this.count);
+  },
+};
 setTimeout(log.save, 500);
 ```
 
-### prototype d'une fonction 
+### prototype d'une fonction
 
 ```js
-
 const Student = {
-  name : '',
-  average : 17.5,
-  situation: function(){
+  name: "",
+  average: 17.5,
+  situation: function () {
     console.log(`Name ${this.name} average : ${this.average}`);
-  }
-}
+  },
+};
 ```
 
 Cet objet possède une propriété **prototype**, elle listera l'ensemble des propriétés héritées depuis l'objet Student. La quasi-totalité des objets JS héritent de l'objet **Object** de JS.
 
 ```js
-Student.__proto__
+Student.__proto__;
 ```
 
 Vous pouvez dès lors appeler des méthodes, qui ne sont pas directement héritées dans l'objet Student.
@@ -889,20 +872,19 @@ Vous pouvez dès lors appeler des méthodes, qui ne sont pas directement hérit�
 Reprenons l'exemple précédent, nous allons voir comment ajouter une propriété au constructeur User qui sera partagée par toutes ses instances :
 
 ```js
-'use strict';
+"use strict";
 
-function User(name, lastname){
+function User(name, lastname) {
   this.name = name;
   this.lastname = lastname;
 }
 
-let u1 = new User('Alan', 'Phi'); 
+let u1 = new User("Alan", "Phi");
 
 // On ajoute sur le constructeur lui-même la propriété
-User.prototype.fullName = function (){
-
-  return this.name + ' ' + this.lastname;
-}
+User.prototype.fullName = function () {
+  return this.name + " " + this.lastname;
+};
 
 console.log(u1.fullName()); // Alan Phi
 ```
@@ -913,7 +895,7 @@ Ajoutez la possibilité de définir l'âge dans la fonction constructeur User. M
 
 Créez maintenant les 4 users suivants :
 
-```js 
+```js
 - Alan Phi age 45 ans notes : 15, 17, 13
 - Bernad Lu age 78 ans notes : 11, 12, 9
 - Sophie Boo age 56 ans notes : 10, 15, 11
@@ -934,7 +916,7 @@ Vous pouvez utiliser une fonction fléchée sur des collections en utilisant des
 
 ```js
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const powerNumber = numbers.map( number => number ** 2);
+const powerNumber = numbers.map((number) => number ** 2);
 ```
 
 ### Exercice puissance 3
@@ -945,11 +927,11 @@ Soit numbers une liste de nombres entiers, élevez uniquement à la puissance 3 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 ```
 
-*Indications : pour calculer une puissance utilisez l'opérateur suivant*
+_Indications : pour calculer une puissance utilisez l'opérateur suivant_
 
 ```js
 // opérateur puissance
-2**3 // 8
+2 ** 3; // 8
 ```
 
 - filter, il permet de filtrer des données dans un tableau en fonction d'un critère.
@@ -957,7 +939,7 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 ```js
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-numbers.filter(number => number > 4);
+numbers.filter((number) => number > 4);
 // [5, 6, 7, 8, 9, 10]
 ```
 
@@ -1006,7 +988,7 @@ Corrigez le code (ES5) suivant afin que le compteur s'incrémente correctement.
 const CounterV1 = {
   count: 0,
   // la fonction callback function reçoit l'élément courant this
-  counter: function() {
+  counter: function () {
     console.log(this.count); // affiche 0
     setInterval(function () {
       this.count++;
@@ -1086,12 +1068,14 @@ Vous pouvez également destructurer un littéral en argument d'une fonction :
 
 ```js
 const student = { mention: "AB", note: 12 };
-const infoStudent = ({ mention, note }) => "info : " + mention + "note : " + note;
+const infoStudent = ({ mention, note }) =>
+  "info : " + mention + "note : " + note;
 
 infoStudent(student);
 
 //notez que vous pouvez également définir la fonction infoStudent sans vous souciez de l'ordre des clés :
-const infoStudent_bis = ({ note, mention }) => "info : " + mention + "note : " + note;
+const infoStudent_bis = ({ note, mention }) =>
+  "info : " + mention + "note : " + note;
 ```
 
 ### Exercice permutations
@@ -1099,7 +1083,8 @@ const infoStudent_bis = ({ note, mention }) => "info : " + mention + "note : " +
 - Permutez les valeurs a et b suivantes :
 
 ```js
-let a = 1, b = 2;
+let a = 1,
+  b = 2;
 ```
 
 - Soient les trois variables a, b, et c permutez les valeurs dans l'ordre suivant :
@@ -1109,7 +1094,9 @@ let a = 1, b = 2;
 - c <- a
 
 ```js
-let a = 1, b = 2, c = 4;
+let a = 1,
+  b = 2,
+  c = 4;
 ```
 
 ### Exercice assigner par décomposition
@@ -1236,18 +1223,18 @@ const newState = { ...state, [name]: "bernard@bernard.fr" };
 
 Utilisez la fonction sort de JS.
 
-1. Ordonnez les students par ordre alphabétique. 
+1. Ordonnez les students par ordre alphabétique.
 
 2. Ordonnez maintenant par ordre croissant en fonction de la longueur des noms.
 
 ```js
-const students = [ "Alan", "Philippe", "Tony", "Geraldine", "Michelle", "Phi" ];
+const students = ["Alan", "Philippe", "Tony", "Geraldine", "Michelle", "Phi"];
 ```
 
 3. Ordonnez la liste des nombres suivants par ordre croissant :
 
 ```js
-const numbers = [ 10, 7, 5, 1, 10, 5];
+const numbers = [10, 7, 5, 1, 10, 5];
 ```
 
 ## Exercice populations
@@ -1280,40 +1267,40 @@ Vous pouvez présenter les résultats recherchés comme suit :
 
 ```js
 [
-  [ { id: 12, name: 'Ian', lenName: 3 } ],
+  [{ id: 12, name: "Ian", lenName: 3 }],
   [
-    { id: 0, name: 'Alan', lenName: 4 },
-    { id: 2, name: 'Jhon', lenName: 4 },
-    { id: 5, name: 'Brad', lenName: 4 },
-    { id: 6, name: 'Carl', lenName: 4 }
+    { id: 0, name: "Alan", lenName: 4 },
+    { id: 2, name: "Jhon", lenName: 4 },
+    { id: 5, name: "Brad", lenName: 4 },
+    { id: 6, name: "Carl", lenName: 4 },
   ],
   [
-    { id: 3, name: 'Brice', lenName: 5 },
-    { id: 9, name: 'Edgar', lenName: 5 },
-    { id: 10, name: 'Erika', lenName: 5 },
-    { id: 11, name: 'Isaac', lenName: 5 }
+    { id: 3, name: "Brice", lenName: 5 },
+    { id: 9, name: "Edgar", lenName: 5 },
+    { id: 10, name: "Erika", lenName: 5 },
+    { id: 11, name: "Isaac", lenName: 5 },
   ],
   [
-    { id: 1, name: 'Albert', lenName: 6 },
-    { id: 7, name: 'Dallas', lenName: 6 },
-    { id: 8, name: 'Dennis', lenName: 6 }
+    { id: 1, name: "Albert", lenName: 6 },
+    { id: 7, name: "Dallas", lenName: 6 },
+    { id: 8, name: "Dennis", lenName: 6 },
   ],
-  [ { id: 4, name: 'Alexendra', lenName: 9 } ]
-]
+  [{ id: 4, name: "Alexendra", lenName: 9 }],
+];
 ```
 
 4. (Facultatif) Créez une clé relations au tableau populations et ajoutez pour chaque personne le nom de ses relations. Ordonnez les par ordre croissant de nombre de relations. Affichez la personne qui a le plus de relations.
 
 ```js
 const relations = [
-  { id : 0 , relation : [1, 2, 4]},
-  { id : 3 , relation : [7, 8]},
-  { id : 4 , relation : [2, 7, 8, 11]},
-  { id : 5 , relation : [1, 2, 4]},
-  { id : 7 , relation : [2, 3, 5, 9]},
-  { id : 9 , relation : [1, 2, 4, 8, 11]},
-  { id : 11 , relation : [1, 2, 9, 10,]},
-]
+  { id: 0, relation: [1, 2, 4] },
+  { id: 3, relation: [7, 8] },
+  { id: 4, relation: [2, 7, 8, 11] },
+  { id: 5, relation: [1, 2, 4] },
+  { id: 7, relation: [2, 3, 5, 9] },
+  { id: 9, relation: [1, 2, 4, 8, 11] },
+  { id: 11, relation: [1, 2, 9, 10] },
+];
 ```
 
 ## Interpolation
@@ -1340,7 +1327,7 @@ Exemple avec une expression JS :
 
 ```js
 let isLoading = true;
-const message = `Data is ${isLoading ? 'loading...' : 'done!'}`;
+const message = `Data is ${isLoading ? "loading..." : "done!"}`;
 ```
 
 Remarque sur la syntaxe ternaire, pour écrire une condition sur une ligne :
@@ -1355,34 +1342,33 @@ console.log( false ? 'yes' : 'no'; ); // no
 Les ternaires sont également très pratiques pour assigner des valeurs avec une condition :
 
 ```js
-logged = true ? 'yes' : 'no'; ; // yes
+logged = true ? "yes" : "no"; // yes
 
-logeed =  false ? 'yes' : 'no'; ; // no
-
+logeed = false ? "yes" : "no"; // no
 ```
 
 Vous pouvez enchaîner les ternaires mais, attention à la lisibilité.
 
 ```js
-logged = true ? ( true ? 'toujours yes' : 'no' )  : 'no'; ; // toujours yes
+logged = true ? (true ? "toujours yes" : "no") : "no"; // toujours yes
 ```
 
-## Ce qui est considéré comme faux en JS 
+## Ce qui est considéré comme faux en JS
 
 0, NaN, undefined, false, "", '', \`\`, null
 
-
 ## Evaluations courcircuit
 
-- Dans le cas où user n'est pas défini avec le connecteur ET 
+- Dans le cas où user n'est pas défini avec le connecteur ET
 
 ```js
-false && user 
+false && user;
 ```
+
 - Avec un OU
 
 ```js
-true || user
+true || user;
 ```
 
 ## Exercices supplémentaires
@@ -1394,7 +1380,6 @@ Créez une fonction récursive permettant de retourner la somme des nombres d'un
 Utilisez la méthode shift() qui permet de dépiler la première valeur d'un tableau. Dans votre fonction récursive définissez **une condition d'arrêt**, sinon la fonction continuera de s'appeler elle-même indéfiniment (Stack Overflow).
 
 ```js
-
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // retourne la première valeur du tableau en la supprimant du tableau
@@ -1434,5 +1419,4 @@ const students = [
     age: 55,
   },
 ];
-
 ```
