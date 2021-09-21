@@ -643,6 +643,23 @@ const myFunc = function () {
 myFunc();
 ```
 
+3. Est ce le code suivant est valide n'exécutez pas le code, répondez simplement.
+
+```js 
+bar();
+
+const myFunc = function () {
+
+  function bar() {
+    console.log("hello")
+  }
+};
+
+
+myFunc();
+
+```
+
 ### 06 Exercice déclaration
 
 *Sans exécuter le code.* 
