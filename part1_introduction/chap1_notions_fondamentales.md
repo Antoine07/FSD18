@@ -630,6 +630,8 @@ const myFunc = function(){
 
 2. Est ce que le code suivant est valide ? Si oui qu'affiche-t-il ?
 
+**CORRECTION : oui c'est valide l'expression est appelée après sa définie et dans le scope de l'expression de fonction une fonction déclarée peut être appelée avant sa définition.**
+
 ```js
 const myFunc = function () {
 
@@ -643,13 +645,16 @@ const myFunc = function () {
 myFunc();
 ```
 
-3. Est ce le code suivant est valide n'exécutez pas le code, répondez simplement.
+3. Est ce le code suivant est valide n'exécutez pas le code, répondez simplement ?
+
+**CORRECTION : Non valide, car bar n'est pas dans le même scope donc non défini.**
 
 ```js 
 bar();
 
 const myFunc = function () {
 
+  // DANS UN SCOPE
   function bar() {
     console.log("hello")
   }
@@ -657,7 +662,20 @@ const myFunc = function () {
 
 
 myFunc();
+```
 
+De même si on appelle la fonction après elle n'est pas dans le même scope, donc cela produira une erreur
+
+```js
+const myFunc = function () {
+
+  function bar() {
+    console.log("hello")
+  }
+};
+
+myFunc();
+bar(); // ERREUR NO DEF
 ```
 
 ### 06 Exercice déclaration
@@ -665,6 +683,8 @@ myFunc();
 *Sans exécuter le code.* 
 
 1. Le code suivant est-il valide ?
+
+**CORRECTION : oui les fonctions déclarées sont compilées en premier dans leur scope courant**
 
 ```js
 bar();
@@ -676,6 +696,8 @@ function bar(){
 
 2. Le code suivant est-il valide ?
 
+**CORRECTION : non on ne peut pas appeler une expression de fonction avant de l'avoir définie.**
+
 ```js
 myFunc(); 
 
@@ -684,10 +706,9 @@ const myFunc = function(){
 }
 ```
 
-
 ### Les fonctions fléchées
 
-Les fonctions fléchées (arrow function) permettent d'avoir une syntaxe plus courte pour définir facilement des fonctions de rappel. On les utilise dans les fonctions JS telles que map, reduce, filter, ...
+Les fonctions fléchées (arrow function) permettent d'avoir une syntaxe plus courte pour définir facilement des fonctions de rappel (callback). On les utilise dans les fonctions JS telles que map, reduce, filter, ...
 
 ```js
 const power2 = (x) => {
@@ -720,7 +741,9 @@ const model2 = (x, y) => {
 
 ### 07 Exercice puissance 3
 
-Soit numbers une liste de nombres entiers, élevez uniquement à la puissance 3 les nombres pairs. Utilisez une fonction flèchée pour cette question.
+1. Soit numbers une liste de nombres entiers, élevez uniquement à la puissance 3 les nombres pairs. Utilisez une fonction flèchée pour cette question. Pensez à créeer un nouveau tableau avec les résultats demandés.
+
+2. (facultatif) Faites un tableau des nombres pairs élevés à la puissance 2 et impairs à la puissance 3. Améliorez la fonction fléchée afin qu'elle puisse élever à une puissance quelconque un nombre donné.
 
 ```js
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -732,6 +755,8 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // opérateur puissance
 2**3 // 8
 ```
+
+
 
 ## Le contexte des fonctions fléchées
 
