@@ -968,13 +968,24 @@ JS possède depuis **ES6** un mot clé class pour définir une classe, nous verr
 
 ### 10 Exercice sur les tableaux
 
-
 2. Ajoutez une méthode sum (prototype) au tableau JS. Cette méthode lorsqu'on l'appelera sur un tableau retournera la somme des valeurs numériques du tableau.
 
 ```js
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numbers = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-numbers.sumEven();
+Array.prototype.sum = function(){
+    let sum = 0;
+    // this représente l'objet tableau qui une instance du constructeur Array
+    for(const num of this){
+        sum += num;
+    }
+
+    return sum;
+}
+
+console.log(numbers.sum());
+console.log(numbers2.sum());
 ```
 
 ## Fonctions fléchées et fonction de rappel dans les tableaux
@@ -1022,6 +1033,14 @@ console.log(total); // affiche 55
 
 numbers.reduce((acc, curr) => curr + acc, 100);
 // 155
+```
+
+### 11 Exercice reduce 
+
+En utilisant la fonction reduce faites la somme des nombres pairs du tableau numbers suivant :
+
+```js
+const numbers = [101, 17, 2, 5, 8, 10];
 ```
 
 ### Exercice max
