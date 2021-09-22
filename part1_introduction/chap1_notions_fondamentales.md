@@ -1032,7 +1032,7 @@ numbers.reduce((acc, curr) => curr + acc, 100);
 // 155
 ```
 
-### 11 Exercices reduce
+### 11 Exercices reduces
 
 1. En utilisant la fonction reduce faites la somme des nombres pairs du tableau numbers suivant :
 
@@ -1044,6 +1044,22 @@ const numbers = [101, 17, 2, 5, 8, 10];
 
 ```js
 const numbers = [101, [17, 2], 5, [8, 9, 10], 10];
+```
+
+3. En utilisant la méthode reduce sur le tableau suivant créez un nouveau tableau pokemonType
+
+```js
+const pokemon = [
+  { name: "charmander", type: "fire" },
+  { name: "squirtle", type: "water" },
+  { name: "bulbasaur", type: "grass" }
+];
+
+const pokemonType = {
+  charmander: { type: "fire" },
+  squirtle: { type: "water" },
+  bulbasaur: { type: "grass" }
+};
 ```
 
 ### Exercice max
