@@ -1,5 +1,8 @@
 "use strict";
 
+/*
+Fonction constructeur
+*/
 function User({ name, lastname, age, notes }) {
   this.name = name;
   this.lastname = lastname;
