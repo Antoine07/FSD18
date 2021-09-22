@@ -947,11 +947,11 @@ User.prototype.fullName = function () {
 console.log(u1.fullName()); // Alan Phi
 ```
 
-### Exercice prototype
+### 09 Exercice prototype
 
-Ajoutez la possibilité de définir l'âge dans la fonction constructeur User. Modifiez pour toutes les instances de User la fonction fullName pour qu'elle affiche le name, le fullName et l'âge d'un user.
+1. Ajoutez la possibilité de définir l'âge dans la fonction constructeur User. Modifiez pour toutes les instances de User la fonction fullName pour qu'elle affiche le name, le fullName et l'âge d'un user.
 
-Créez maintenant les 4 users suivants :
+2. Créez maintenant les 4 users suivants :
 
 ```js
 - Alan Phi age 45 ans notes : 15, 17, 13
@@ -960,9 +960,9 @@ Créez maintenant les 4 users suivants :
 - Alice Car age 45 ans notes : 5, 18, 20
 ```
 
-Créez un nouveau prototype average dans la fonction constructeur User, qui calculera la moyenne des notes de chaque user.
+3. Créez un nouveau prototype average dans la fonction constructeur User, qui calculera la moyenne des notes de chaque user.
 
-Quand JS appelle cette méthode il ne la trouvera pas dans l'instance de User mais dans son prototype. Cette technique permet donc de créer des méthodes partagées par toutes les instances. Notez que vous pouvez tout à fait définir la méthode fullName après avoir fait son instance.
+*Remarques : quand JS appelle cette méthode il ne la trouvera pas dans l'instance de User mais dans son prototype. Cette technique permet donc de créer des méthodes partagées par toutes les instances. Notez que vous pouvez tout à fait définir la méthode fullName après avoir fait son instance.*
 
 JS possède depuis **ES6** un mot clé class pour définir une classe, nous verrons qu'en fait ce mot clé permet de définir, comme dans l'exemple précédent, un constructeur.
 
