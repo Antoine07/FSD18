@@ -773,32 +773,30 @@ School.sayHello();
 School.sayHelloArrowFunc();
 ```
 
-
-## Exemple  pour bien comprendre la portée du this dans différents contexts
+## Exemple pour bien comprendre la portée du this dans différents contexts
 
 ```js
 const School = {
-   name : "3WA",
-   setName : function(name){
-       console.log(this);
-       this.name = name;
-       function upper(){
-        // le this perd le contexte de School
-        // une fonction déclarée re-définit le this (fonction constructeur)
-        console.log(this); // le contexte global donc dans Node.js c'est l'objet global
-        // this.name = this.name.toUppercase();
-       }
+  name: "3WA",
+  setName: function (name) {
+    console.log(this);
+    this.name = name;
+    function upper() {
+      // le this perd le contexte de School
+      // une fonction déclarée re-définit le this (fonction constructeur)
+      console.log(this); // le contexte global donc dans Node.js c'est l'objet global
+      // this.name = this.name.toUppercase();
+    }
 
-       upper();
-   },
-   getName : function(){
-       return this.name
-   }
-}
+    upper();
+  },
+  getName: function () {
+    return this.name;
+  },
+};
 
 // 1. Quel est le this retourné par la méthode setName ?
 // c'est le this de School.
-
 
 School.setName("Lycee Aubenas");
 
@@ -808,7 +806,6 @@ console.log("School", School.getName());
 
 // Non il ne fonctionne pas le this de la fonction upper ne récupère le contexte de School mais le contexte global c'est dire ici l'objet global de Node.js
 
-
 /*
 
 Première solution avec une variable et la notion de portée
@@ -816,23 +813,23 @@ Première solution avec une variable et la notion de portée
 */
 
 const School2 = {
-    name : "3WA",
-    setName : function(name){
-        this.name = name;
-        const that = this; // portée de bloc this c'est School2 
-        function upper(){
-            // est ce que that est accessible dans upper
-            that.name = that.name.toUpperCase();
-        }
- 
-        upper();
-    },
-    getName : function(){
-        return this.name
+  name: "3WA",
+  setName: function (name) {
+    this.name = name;
+    const that = this; // portée de bloc this c'est School2
+    function upper() {
+      // est ce que that est accessible dans upper
+      that.name = that.name.toUpperCase();
     }
- }
 
- School2.setName("Lycee Aubenas");
+    upper();
+  },
+  getName: function () {
+    return this.name;
+  },
+};
+
+School2.setName("Lycee Aubenas");
 
 console.log("School2", School2.getName());
 
@@ -843,23 +840,23 @@ Deuxième solution avec une fonction fléchée, récupère le this du context da
 */
 
 const School3 = {
-    name : "3WA",
-    setName : function(name){
-        this.name = name;
-       
-        const upper = () => {
-            // est ce que that est accessible dans upper
-            this.name = this.name.toUpperCase();
-        }
- 
-        upper();
-    },
-    getName : function(){
-        return this.name
-    }
- }
+  name: "3WA",
+  setName: function (name) {
+    this.name = name;
 
- School3.setName("Lycee Aubenas");
+    const upper = () => {
+      // est ce que that est accessible dans upper
+      this.name = this.name.toUpperCase();
+    };
+
+    upper();
+  },
+  getName: function () {
+    return this.name;
+  },
+};
+
+School3.setName("Lycee Aubenas");
 
 console.log("School3", School3.getName());
 ```
@@ -962,7 +959,7 @@ console.log(u1.fullName()); // Alan Phi
 
 3. Créez un nouveau prototype average dans la fonction constructeur User, qui calculera la moyenne des notes de chaque user.
 
-*Remarques : quand JS appelle cette méthode il ne la trouvera pas dans l'instance de User mais dans son prototype. Cette technique permet donc de créer des méthodes partagées par toutes les instances. Notez que vous pouvez tout à fait définir la méthode fullName après avoir fait son instance.*
+_Remarques : quand JS appelle cette méthode il ne la trouvera pas dans l'instance de User mais dans son prototype. Cette technique permet donc de créer des méthodes partagées par toutes les instances. Notez que vous pouvez tout à fait définir la méthode fullName après avoir fait son instance._
 
 JS possède depuis **ES6** un mot clé class pour définir une classe, nous verrons qu'en fait ce mot clé permet de définir, comme dans l'exemple précédent, un constructeur.
 
@@ -974,15 +971,15 @@ JS possède depuis **ES6** un mot clé class pour définir une classe, nous verr
 const numbers = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-Array.prototype.sum = function(){
-    let sum = 0;
-    // this représente l'objet tableau qui une instance du constructeur Array
-    for(const num of this){
-        sum += num;
-    }
+Array.prototype.sum = function () {
+  let sum = 0;
+  // this représente l'objet tableau qui une instance du constructeur Array
+  for (const num of this) {
+    sum += num;
+  }
 
-    return sum;
-}
+  return sum;
+};
 
 console.log(numbers.sum());
 console.log(numbers2.sum());
@@ -1035,12 +1032,18 @@ numbers.reduce((acc, curr) => curr + acc, 100);
 // 155
 ```
 
-### 11 Exercice reduce 
+### 11 Exercices reduce
 
-En utilisant la fonction reduce faites la somme des nombres pairs du tableau numbers suivant :
+1. En utilisant la fonction reduce faites la somme des nombres pairs du tableau numbers suivant :
 
 ```js
 const numbers = [101, 17, 2, 5, 8, 10];
+```
+
+2. En utilisant reduce faite la somme des valeurs du tableau suivant
+
+```js
+const numbers = [101, [17, 2], 5, [8, 9, 10], 10];
 ```
 
 ### Exercice max
