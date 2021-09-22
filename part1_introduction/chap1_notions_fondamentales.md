@@ -966,6 +966,17 @@ console.log(u1.fullName()); // Alan Phi
 
 JS possède depuis **ES6** un mot clé class pour définir une classe, nous verrons qu'en fait ce mot clé permet de définir, comme dans l'exemple précédent, un constructeur.
 
+### 10 Exercice sur les tableaux
+
+
+2. Ajoutez une méthode sum (prototype) au tableau JS. Cette méthode lorsqu'on l'appelera sur un tableau retournera la somme des valeurs numériques du tableau.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+numbers.sumEven();
+```
+
 ## Fonctions fléchées et fonction de rappel dans les tableaux
 
 Vous pouvez utiliser une fonction fléchée sur des collections en utilisant des fonctions comme map, filter ou reduce par exemple :
