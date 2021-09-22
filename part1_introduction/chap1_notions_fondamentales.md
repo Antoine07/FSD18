@@ -1044,6 +1044,8 @@ const numbers = [101, 17, 2, 5, 8, 10];
 
 ```js
 const numbers = [101, [17, 2], 5, [8, 9, 10], 10];
+
+Array.isArray(curr); // retourne true si c'est un tableau
 ```
 
 3. En utilisant la méthode reduce sur le tableau suivant créez un nouveau tableau pokemonType
