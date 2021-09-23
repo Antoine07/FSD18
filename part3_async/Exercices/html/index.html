@@ -12,13 +12,17 @@
     <h1>Email callback</h1>
     <div id="root"></div>
     <script>
+        const root = document.getElementById('root');
         const login = (email, password, callback) => {
             return setTimeout(() => {
                 callback(email);
             }, 1000);
         }
-
-       
+        console.log('Start');
+        const callback = email => {
+            root.innerHTML = email;
+        }
+        console.log('End');
     </script>
 </body>
 
