@@ -1196,6 +1196,12 @@ let a = 1,
   b = 2;
 ```
 
+### Correction
+
+```js
+[a, b] = [b, a]
+```
+
 2. Soient les trois variables a, b, et c permutez les valeurs dans l'ordre suivant :
 
 - a <- b
@@ -1206,6 +1212,12 @@ let a = 1,
 let a = 1,
   b = 2,
   c = 4;
+```
+
+### Correction
+
+```js
+[a, b, c] = [b, c, a]
 ```
 
 ### Exercice assigner par décomposition
