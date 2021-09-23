@@ -1169,7 +1169,7 @@ const st = {
 
 const {
   name,
-  family: { sister },
+  family: { sister }, // sister vaut Sylvie
 } = st;
 ```
 
@@ -1189,14 +1189,14 @@ const infoStudent_bis = ({ note, mention }) =>
 
 ### Exercice permutations
 
-- Permutez les valeurs a et b suivantes :
+1. Permutez les valeurs a et b suivantes :
 
 ```js
 let a = 1,
   b = 2;
 ```
 
-- Soient les trois variables a, b, et c permutez les valeurs dans l'ordre suivant :
+2. Soient les trois variables a, b, et c permutez les valeurs dans l'ordre suivant :
 
 - a <- b
 - b <- c
