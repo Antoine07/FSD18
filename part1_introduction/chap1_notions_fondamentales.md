@@ -1220,14 +1220,14 @@ let a = 1,
 [a, b, c] = [b, c, a]
 ```
 
-### Exercice assigner par décomposition
+### 12 Exercice assigner par décomposition
 
 1. Calculez la moyenne des notes de l'étudiant. Modifiez la référence du littéral.
 
 2. Puis assignez les valeurs **name**, **notes** et **average** dans les constantes name, notes et average dans le script courant.
 
 ```js
-let student = {
+const student = {
   name: "Alan",
   notes: [10, 16, 17],
   average: null,
@@ -1239,7 +1239,7 @@ let student = {
 console.log(name, notes, average);
 ```
 
-### Exercice iterate destructuring
+### 13 Exercice iterate destructuring
 
 Affichez le nom et le nom de la soeur de chaque étudiant en utilisant une boucle for of dans le littéral students :
 
@@ -1274,9 +1274,10 @@ Vous pouvez effectuer une fusion des deux tableaux en JS à l'aide de l'opérate
 
 ```js
 let numbers1 = [1, 2, 3, 4, 5, 7, 8, 9, 10];
-let numbers2 = [11, 12, 13];
+let numbers2 = [1, 11, 12, 13];
 
-let numMerge = [...numbers1, ...numbers2];
+let numMerge = [...numbers1, ...numbers2]; // concaténation des deux tableaux
+// [1, 2, 3, 4, 5, 7, 8, 9, 10,1, 11, 12, 13 ]
 ```
 
 Vous pouvez également fusionner deux littéraux :
@@ -1315,14 +1316,34 @@ const newState = { ...state, email: "sophie@sophie.fr" };
 // {name: "", age: 25, email: "sophie@sophie.fr"}
 ```
 
-## Exercice push value
+## 14 Exercice push value
 
-Soient les données suivantes. Créez un tableau strNumbers et pushez-y chacune de ses valeurs.
+1. Soient les données suivantes. Créez un tableau strNumbers et pushez-y chacune de ses valeurs.
 
 ```js
 const strNumbers = [];
 const str1 = ["one", "two"];
 const str2 = ["three", "four"];
+```
+
+2. Mettre à jour la clé age du littéral student Alan a en réalité 45 ans et non 18. Utilisez le spread operator pour faire cette mise à jour.
+
+```js
+const state = {
+  name: "Alan",
+  age: 18,
+  email: "alan@alan.fr",
+};
+```
+
+3. Ré-initialiser le littéral suivant state suivant, count vaut 0 et numbers est un tableau vide une fois ré-initialisé.  Utilisez le spread operator pour le faire.
+
+```js
+const state = {
+  count : 3,
+  numbers : [1,2,3]
+}
+
 ```
 
 ## Nom de propriété calculé et décomposition
