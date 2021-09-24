@@ -14,14 +14,18 @@
     <script>
         const root = document.getElementById('root');
         const login = (email, password, callback) => {
-            return setTimeout(() => {
+            setTimeout(() => {
                 callback(email);
-            }, 1000);
+            }, 5000);
         }
-        console.log('Start');
+
+        // ma fonction de callback
         const callback = email => {
             root.innerHTML = email;
         }
+
+        console.log('Start');
+        login('alan@alan.fr', '123', callback);
         console.log('End');
     </script>
 </body>
