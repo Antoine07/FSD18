@@ -289,6 +289,7 @@ class Model{
 
     get tableName(){
         return this._tableName;
+    }
 
 }
 
@@ -398,6 +399,8 @@ Qu'affiche le code suivant ? Choisissez la bonne réponse avec la bonne explicat
 console.log( "24" + 0.2 *"24" )
 ```
 
+_Réponses_ :
+
 - [ ] undefined, JS retourne cette valeur car il est incapable d'effectuer le calcul.
 - [ ] '244.800000000000001', "24" est concaténé au résultat de l'opération 0.2 *"24".
 - [ ] '244.800000000000001', ce résultat est produit de manière aléatoire. 
@@ -410,6 +413,8 @@ Quelle est la valeur du résultat suivant ? Répondez en choisissant qu'une seul
 ```js
 console.log( !isNaN( parseFloat("27.8" ) ) );
 ```
+
+_Réponses_ :
 
 - [ ] NaN
 - [ ] true
