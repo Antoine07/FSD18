@@ -71,7 +71,7 @@ const login = (email, password, callback ) => {
 }
 ```
 
-## Exercice additions callback
+## 02 Exercice additions callback
 
 1. En utilisant deux fois la fonction add qui est asynchrone et avec sa fonction de callback additionner 1 et 2 
 
@@ -88,14 +88,8 @@ Ajoutez maintenant une fonction de callback **error** cette fonction sera appel�
 2. Améliorez la fonction d'erreur en levant une exception.
 
 ```js
-
-throw new Error('Bad number ...')
-
+throw new Error('Bad number ...');
 ```
-
-### Exercice concat async
-
-Soit une fonction message asynchrone qui retournera une chaîne de caractères. Appellez deux fois cette fonction pour concatener le message suivant : "Hello" + "World!".
 
 ## Promesse
 
@@ -127,34 +121,7 @@ p(9)
 
 Remarques : vous pouvez enchaîner plusieurs promesses, elles seront résolues l'une à la suite de l'autre.
 
-## Exercice add avec des promesses
-
-Reprennez l'exercice précédent avec la fonction **add** mais, cette fois-ci utilisez des promesses.
-
-## Promise all
-
-Vous pouvez également lancer plusieurs promesses en même temps et attendre que toutes ces promesses soient résolues ou si l'une d'entre elle échoue tout arrêter. Promise.all permet d'exécuter un ensemble de promesses :
-
-```js
-const p = number => ( new Promise((resolve, reject) => {
-  setTimeout(() => {
-    if (isNaN(parseInt(number))) {
-        reject( new Error( 'not a number ...' ) );
-
-        return;
-    }
-    resolve(number);
-  }
-  , 100);
-}) ) ;
-
-Promise.all([p(1), p(2), p(3)]).then(numbers => { 
-    console.log( numbers.reduce((acc, curr) => acc + curr) );
-}).catch( err => console.error(err));
-
-```
-
-### Exercice read json dragon
+### 03 Exercice read json dragon
 
 Vous allez utiliser un module node "fs" qui permet de lire un fichier, voici une syntaxe de base pour lire un fichier, récupérez le fichier data/dragons.json sur le serveur et testez le code ci-dessous :
 
@@ -180,6 +147,30 @@ fs.readFile('./data/dragons.json', { encoding: 'utf8' }, (err, data) => {
 3. Quel est le nom du dragon le plus jeune ? Faite un script pour répondre à cette question.
 
 4. Récupérez les dragons et ordonnées les par age décroissant.
+
+
+## Promise all
+
+Vous pouvez également lancer plusieurs promesses en même temps et attendre que toutes ces promesses soient résolues ou si l'une d'entre elle échoue tout arrêter. Promise.all permet d'exécuter un ensemble de promesses :
+
+```js
+const p = number => ( new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (isNaN(parseInt(number))) {
+        reject( new Error( 'not a number ...' ) );
+
+        return;
+    }
+    resolve(number);
+  }
+  , 100);
+}) ) ;
+
+Promise.all([p(1), p(2), p(3)]).then(numbers => { 
+    console.log( numbers.reduce((acc, curr) => acc + curr) );
+}).catch( err => console.error(err));
+
+```
 
 ### Exercice relationships dragons
 
