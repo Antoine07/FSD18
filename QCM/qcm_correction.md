@@ -1,5 +1,7 @@
 # QCM
 
+difficulté sur 5, si difficile c'est mentioné dans la question pour la correction
+
 ## Question 1
 
 Que signifie ECMAScript ?
@@ -8,7 +10,7 @@ _Réponses_ :
 - [ ] C'est un langage de programmation
 - [ ] C'est une base de données
 - [ ] C'est un service Web
-- [ ] C'est un ensemble de normes
+- [X] C'est un ensemble de normes
 
 ## Question 2
 
@@ -16,7 +18,7 @@ Quels sont les types primitifs en JS ?
 _Réponses_ :
 
 - [ ] boolean null undefined number bigint
-- [ ] boolean null undefined number bigint string symbole
+- [X] boolean null undefined number bigint string symbole
 - [ ] Object number string
 - [ ] Object boolean null undefined number bigint string symbole
 
@@ -31,7 +33,7 @@ const myMap = new Map([1, 2, 3]);
 
 - [ ] len
 - [ ] length
-- [ ] size
+- [X] size
 - [ ] size()
 
 ## Question 4
@@ -47,7 +49,7 @@ _Réponses_ :
 
 - [ ] `[1, 2, 3, 4, 5, 5]`
 - [ ] `{1, 2, 3, 4, 5, 5}`
-- [ ] `{1, 2, 3, 4, 5}`
+- [X] `{1, 2, 3, 4, 5}`
 - [ ] `{1, 2, 3, 4, 5, 5}`
 
 ## Question 5
@@ -71,7 +73,7 @@ baz();
 _Réponses_ :
 
 - [ ] 1 2
-- [ ] 1 1 2
+- [X] 1 1 2
 - [ ] 1 1 2 2
 - [ ] 1 1
 
@@ -89,7 +91,7 @@ console.log(t1);
 _Réponses_ :
 
 - [ ] Une SyntaxError
-- [ ] `[1,2,3]`
+- [X] `[1,2,3]`
 - [ ] `[1,2]`
 - [ ] `{1,2,3}`
 
@@ -104,7 +106,7 @@ console.log(j);
 
 _Réponses_ :
 
-- [ ] `ReferenceError`
+- [X] `ReferenceError`
 - [ ] `SyntaxError`
 - [ ] 10
 - [ ] null
@@ -123,7 +125,7 @@ _Réponses_ :
 
 - [ ] `SyntaxError`
 - [ ] `ReferenceError`
-- [ ] 10 11
+- [X] 10 11
 - [ ] 10 111
 
 ## Question 9
@@ -140,8 +142,8 @@ _Réponses_ :
 
 - [ ] `SyntaxError`
 - [ ] `ReferenceError`
-- [ ] 7
-- [ ] `[111,120, 7]`
+- [] 7
+- [X] `[111,120, 7]`
 
 ## Question 10
 
@@ -158,7 +160,7 @@ _Réponses_ :
 
 - [ ] `[[1, 2]]`
 - [ ] `[3]`
-- [ ] `[1,2,3]`
+- [X] `[1,2,3]`
 - [ ] `[1, 2]`
 
 ## Question 11
@@ -176,10 +178,10 @@ _Réponses_ :
 
 - [ ] `[[1, 2]]`
 - [ ] `[3]`
-- [ ] `[1,2,3]`
+- [X] `[1,2,3]`
 - [ ] `[1, 2]`
 
-## Question 12
+## Question 12 (5/5)
 
 Qu'affiche le code suivant ?
 
@@ -194,10 +196,10 @@ console.log(sentence);
 
 _Réponses_ :
 
-- [ ] `["7", "7", "7"]`
-- [ ] `[7, 7, 7]`
-- [ ] `["0", "7", "7", "7"]`
-- [ ] `["8790", "8987", "7777", "9007"]`
+- [X] `["7", "7", "7"]`
+- [] `[7, 7, 7]`
+- [ ] `[]`
+- [] `["8790", "8987", "7777", "9007"]`
 
 ## Question 13
 
@@ -211,10 +213,10 @@ console.log(sentence);
 
 _Réponses_ :
 
-- [ ] `["7", "7", "7"]`
+- [] `["7", "7", "7"]`
 - [ ] `[7, 7, 7]`
 - [ ] `[]`
-- [ ] `["0", "e", "7", "7", "d", "7"]`
+- [X] `["0", "e", "7", "7", "d", "7"]`
 
 ## Question 14
 
@@ -234,12 +236,12 @@ const st = {
 
 _Réponses_ :
 
-- [ ] `const { name, family : { sister }} = st;`
+- [X] `const { name, family : { sister }} = st;`
 - [ ] `const { name, sister } = st;`
 - [ ] `const { name, family.sister } = st;`
 - [ ] `const { name, sister : { family }} = st;`
 
-## Question 15
+## Question 15 (5/5)
 
 Qu'affiche le code suivant ?
 
@@ -258,7 +260,7 @@ class Rectangle {
 class Square extends Rectangle {
   constructor(w) {
     this._w = w;
-    super(w);
+    super(w); 
   }
   // ...
 }
@@ -268,10 +270,10 @@ console.log(new Square(3).w);
 
 _Réponses_ :
 
-- [ ] `ReferenceError`
-- [ ] 3
+- [X] `ReferenceError`
+- [] 3
 - [ ] 9
-- [ ] `SyntaxError`
+- [] `SyntaxError`
 
 ## Question 16
 
@@ -302,7 +304,7 @@ _Réponses_ :
 
 - [ ] `ReferenceError`
 - [ ] POSTS
-- [ ] posts
+- [X] posts
 - [ ] `SyntaxError`
 
 ## Question 17
@@ -316,6 +318,7 @@ const st = {
   age: 45,
   relationships: [1, 2],
 };
+// les parenthèses forcent le retour
 const response = ({ name, age }) => ({ name, age });
 
 console.log(response(st));
@@ -325,7 +328,7 @@ _Réponses_ :
 
 - [ ] `SyntaxError`
 - [ ] `{name : "Alan", age : null}`
-- [ ] `{name : "Alan", age : 45}`
+- [X] `{name : "Alan", age : 45}`
 - [ ] `({name : "Alan", age : 45})`
 
 ## Question 18
@@ -348,7 +351,7 @@ console.log(`-> ${n[0]}`);
 _Réponses_ :
 
 - [ ] `-> Alan`
-- [ ] `-> A`
+- [X] `-> A`
 - [ ] `-> {name : "Alan"}`
 - [ ] `SyntaxError`
 
@@ -361,6 +364,7 @@ const Add = (number, callback) => {
     setTimeout(() => { callback(number); }, 500);
 };
 
+// callback hell
 Add(1, number => {
     let sum = number;
     Add(2, number => {
@@ -378,7 +382,7 @@ _Réponses_ :
 
 - [ ] undefined
 - [ ] ""
-- [ ] 6
+- [X] 6
 - [ ] 3
 
 ## Question 20
@@ -387,7 +391,7 @@ Comment définissez-vous Javascript ?
 _Réponses_ :
 
 - [ ] Javascript est synchrone multi-thread
-- [ ] Javascript est synchrone mono-thread
+- [X] Javascript est synchrone mono-thread
 - [ ] Javascript est asynchrone multi-thread
 - [ ] Javascript est asynchrone mono-thread
 
@@ -402,7 +406,7 @@ console.log( "24" + 0.2 *"24" )
 _Réponses_ :
 
 - [ ] undefined, JS retourne cette valeur car il est incapable d'effectuer le calcul.
-- [ ] '244.800000000000001', "24" est concaténé au résultat de l'opération 0.2 *"24".
+- [X] '244.800000000000001', "24" est concaténé au résultat de l'opération 0.2 *"24".
 - [ ] '244.800000000000001', ce résultat est produit de manière aléatoire. 
 - [ ] 244.800000000000001, c'est le bon résultat des opération + et *.
 
@@ -417,6 +421,6 @@ console.log( !isNaN( parseFloat("27.8" ) ) );
 _Réponses_ :
 
 - [ ] NaN
-- [ ] true
+- [X] true
 - [ ] false
 - [ ] 27.8
