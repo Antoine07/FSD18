@@ -137,6 +137,17 @@ Une boîte noire dans un avion par exemple aura un programme possédant des attr
 
 - accesseur ou getter
 
+### 01 Exercice Product
+
+1. Créez une classe Product avec un name et un price. Créez deux produits :
+
+```php
+$apple = new Product(name : 'apple', price : 0.5);
+$ornage = new Product(name : 'orange', price : 0.5);
+```
+
+2. Imaginez maintenant commander dans le même script 10 pommes et 5 oranges calculez la somme TTC. Ne créez pas de classe panier, faites vos calculs directement dans le script courant.
+
 ## Single Responsability
 
 Lorsqu'on programmera en objet on devra toujours garder à l'esprit le principe suivant: Une classe un rôle, ou attribuer à chaque classe une responsabilité unique définie et bornée. Par exemple la classe Persona, Scene, Role.
