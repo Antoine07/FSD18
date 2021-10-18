@@ -24,6 +24,23 @@ La classe représente l'implémentation des attributs (variables de la classe) e
 Pour rendre "concrète" son utilisation, on fera une instance de la classe Persona.
 
 ```php
+
+class Persona{
+     // les attributs de la classe, les variables de la classe
+     private int $force;
+     private string $secret;
+     
+     // n'initialiser les variables de la classe
+     public function __construct(
+        int $force, 
+        string $secret = "my secret" // paramètre facultatif 
+    ){
+        $this->force = $force;
+        $this->secret = $secret;
+    }
+}
+
+// à partir de PHP 8
 class Persona{
 
     public function __construct(
