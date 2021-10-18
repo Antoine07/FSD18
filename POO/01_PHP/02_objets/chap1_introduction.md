@@ -148,6 +148,40 @@ $ornage = new Product(name : 'orange', price : 0.5);
 
 2. Imaginez maintenant commander dans le même script 10 pommes et 5 oranges calculez la somme TTC. Ne créez pas de classe panier, faites vos calculs directement dans le script courant.
 
+
+## Justification de l'utilisation des setter et getter
+
+Ils permettent de vérifier la cohérence des données qui "hydrate" les objets (données des valeurs à vos attributs de la classe). Les variables doivent rester dans cette idée PRIVATE.
+
+```php
+// Les vitesses données à vos voitures seront comprises entre 0 et 350 uniquement, voir le setter (setSpeed) ci-dessous.
+class Car{
+    private float $speed;
+
+    /**
+     * Get the value of speed
+     */ 
+    public function getSpeed():float
+    {
+        return $this->speed;
+    }
+
+    /**
+     * Set the value of speed
+     *
+     * @return  null
+     */ 
+    public function setSpeed(float $speed)
+    {
+        if($speed >= 0 && $speed < 351)
+            $this->speed = $speed;
+
+    }
+}
+
+$car02 = new Car;
+```
+
 ## Single Responsability
 
 Lorsqu'on programmera en objet on devra toujours garder à l'esprit le principe suivant: Une classe un rôle, ou attribuer à chaque classe une responsabilité unique définie et bornée. Par exemple la classe Persona, Scene, Role.
