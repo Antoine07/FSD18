@@ -18,7 +18,7 @@ function div(a, b) {
 try {
   div(2, 0);
 } catch (e) {
-  console.log("Mincie là il y a eu une exception dans ton code ...");
+  console.log("Mince là il y a eu une exception dans ton code ...");
 }
 
-console.log("Ma la vie continue ...");
+console.log("Mais la vie continue ...");
