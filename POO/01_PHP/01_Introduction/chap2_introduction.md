@@ -254,36 +254,11 @@ $a = [1, 2];
 $a = ['a' => 1, 'b' => 2];
 ```
 
-- Itérable est un pseudo-type
-
-Il accepte n'importe quel tableau ou objet implémentant l'interface Traversable.
-
-```php
-
-function foo(iterable $iterable) {
-    foreach ($iterable as $value) {
-        // ...
-    } 
-}
-```
-
 - Les objets
 
 ```php
 class A {}
 $a = new A;
-```
-
-- Les ressources sont des variables spéciales contenant une référence vers une ressource externe.
-
-```php
-// affiche : stream (ndt : flux)
-$fp = fopen("foo", "w");
-echo get_resource_type($fp) . "\n"; 
-
-// affiche : curl
-$c = curl_init ();
-echo get_resource_type($c) . "\n"; // fonctionne sur les versions antérieures à PHP 8.0.0, car à partir de PHP 8.0.0, curl_init returne un objet CurlHandle
 ```
 
 - Le type NULL
@@ -292,18 +267,6 @@ echo get_resource_type($c) . "\n"; // fonctionne sur les versions antérieures �
 $var = NULL;
 ```
 
-- Type callable
-
-Les fonctions de rappel peuvent être identifiées par le type callable.
-
-```php
-function sayHello(callable $call, $message) {
-  echo $call($message); // fonction de rappel
-}
-
-sayHello( function($m){return $m; }, "Hello World !" );
-
-```
 
 ## Manipulation et attribution de type
 
@@ -314,14 +277,6 @@ PHP ne permet pas d'imposer la définition des types de manière explicite lors 
 $str = "Hello Wordl ! " ; // type string
 $number = 12; // type number
 $foo = 5 * "10 Little Piggies"; // $foo est un entier (50)
-```
-
-PHP supporte également l'indexation des chaînes de caractères à l'aide de la position. C'est la même syntaxe pour accéder aux éléments d'un tableau.
-
-```php
-$message = "Car";
-$message[0] = "B";
-echo $message; // Bar
 ```
 
 ### Modification des types
@@ -341,7 +296,6 @@ Voici la liste des préfixes autorisés :
 - (string) : modification en string
 - (array) : modification en array
 - (object) : modification en object
-- (unset) : modification en NULL
 
 ## Fonctions nommées & anonymes
 
@@ -349,17 +303,27 @@ Une fonction n'a pas besoin d'être définie avant d'être utilisée. Sauf si vo
 
 Vous pouvez définir une fonction dans une fonction.
 
+```php
+
+add( 1,2);
+
+function add(int $a ,int $b):int{
+    return $a + $b ;
+}
+
+```
+
 ### Typage des arguments et du retour d'une fonction
 
 Nous pouvons également typer les arguments ainsi que les valeurs de retour. Vous pouvez également déclarer un ensemble de types en les séparant par une barre verticale, le caractère "pipe" : | .
 
 ```php
 
+add( 1,2);
+
 function add(int $a ,int $b):int{
     return $a + $b ;
 }
-
-add( 1,2);
 
 function merge( int | array $a, int $b) : int | array {
     if( !is_array($a) )
@@ -381,25 +345,6 @@ function foo(int $a , array $numbers, int $c):void{
 foo( numbers:[1, 2, 3], a: 2, c: 8);
 ```
 
-### Exercice split_array 
-
-Créez une fonction qui prend en argument un tableau de nombres et une valeur entière donnant la position pour spliter le tableau en deux. Si la valeur de la position est supérieure à la longueur du tableau, retournez le.
-
-Vous pouvez utiliser la fonction array_shift de PHP pour dépiler le tableau.
-
-```php
-split_array(numbers: [4,6,9, 17], pos : 2);
-// [ [4,6,9] , [17] ]
-```
-
-### Exercice mapped 
-
-Créez une fonction mapped avec trois arguments glue, array et symbol. Voyez l'exemple ci-dessous. Elle permettra de rassembler les clés et les valeurs dans une chaîne de caractères.
-
-```php
-mapped(numbers: ['x' => 1,'y' => 2,'z' => 3,'t' => 7], glue : ', ', symbol : "=");
-// x = 1, y = 2, z = 3, t = 7
-```
 
 ### Exercice zip 
 
@@ -409,53 +354,3 @@ Créez une fonction permettant de regrouper terme à terme les éléments de deu
 var_dump(zipper(tab1 : [1,2,3], tab2: [4,5,6]));
 // [[1,4], [2,5], [3, 6]]
 ```
-
-## Exercice Fizzbuzz
-
-En utilisant l'expression match de PHP implémentez l'algorithme de FizzBuzz, aidez-vous de la remarque ci-après :
-
-Pour les nombres de 1 à 100 compris.
-- Pour les multiples de 3, affichez Fizz au lieu du nombre.
-- Pour les multiples de 5, affichez Buzz au lieu du nombre.
-- Pour les nombres multiples de 3 et 5, affichez uniquement FizzBuzz.
-- Dans les autres cas le nombre lui-même.
-
-Remarque : voici un exemple de l'utilisation match en PHP, il permet de tester par rapport à une résultat un premier prédicat qui correspond et dans ce cas retourner un résultat :
-
-```php
-$age = 23;
-
-$result = match (true) {
-    $age >= 65 => 'senior',
-    $age >= 25 => 'adult',
-    $age >= 18 => 'young adult',
-    default => 'kid',
-};
-
-```
-
-## Exercice speed power
-
-En considérant la remarque mathématique ci-après pour le calcul de puissance, créez une fonction récursive **speed_power**. Elle prendra deux paramètres, le nombre et l'exposant. Aidez-vous de la remarque ci-après.
-
-
-Remarque : l'idée est de trouver des conditions pour calculer plus rapidement. Voici schématiquement comment cet algorithme fonctionne, on partira de la remarque mathématique suivante :
-
-1. Remarque mathématique 
-
-```text
-z = 3^10 = (3^5)^2
-```
-
-2. Comment fonctionnerait cet algorithme avec une récursion :
-
-```text
-3^11
-
-11 =>  z = speed_power(3, 5)   => z = speed_power(3, 2)  =>  z = speed_power(3, 1) => 3
-            z * z * 3                 z * z * 3                    z * z
-          9*9*3 * 9*9*3 * 3           z  = 9*9*3                   z = 9
-``` 
-
-
-
