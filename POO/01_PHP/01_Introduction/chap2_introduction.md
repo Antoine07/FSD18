@@ -254,19 +254,6 @@ $a = [1, 2];
 $a = ['a' => 1, 'b' => 2];
 ```
 
-- Itérable est un pseudo-type
-
-Il accepte n'importe quel tableau ou objet implémentant l'interface Traversable.
-
-```php
-
-function foo(iterable $iterable) {
-    foreach ($iterable as $value) {
-        // ...
-    } 
-}
-```
-
 - Les objets
 
 ```php
