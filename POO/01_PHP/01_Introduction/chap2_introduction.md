@@ -261,36 +261,12 @@ class A {}
 $a = new A;
 ```
 
-- Les ressources sont des variables spéciales contenant une référence vers une ressource externe.
-
-```php
-// affiche : stream (ndt : flux)
-$fp = fopen("foo", "w");
-echo get_resource_type($fp) . "\n"; 
-
-// affiche : curl
-$c = curl_init ();
-echo get_resource_type($c) . "\n"; // fonctionne sur les versions antérieures à PHP 8.0.0, car à partir de PHP 8.0.0, curl_init returne un objet CurlHandle
-```
-
 - Le type NULL
 
 ```php
 $var = NULL;
 ```
 
-- Type callable
-
-Les fonctions de rappel peuvent être identifiées par le type callable.
-
-```php
-function sayHello(callable $call, $message) {
-  echo $call($message); // fonction de rappel
-}
-
-sayHello( function($m){return $m; }, "Hello World !" );
-
-```
 
 ## Manipulation et attribution de type
 
@@ -301,14 +277,6 @@ PHP ne permet pas d'imposer la définition des types de manière explicite lors 
 $str = "Hello Wordl ! " ; // type string
 $number = 12; // type number
 $foo = 5 * "10 Little Piggies"; // $foo est un entier (50)
-```
-
-PHP supporte également l'indexation des chaînes de caractères à l'aide de la position. C'est la même syntaxe pour accéder aux éléments d'un tableau.
-
-```php
-$message = "Car";
-$message[0] = "B";
-echo $message; // Bar
 ```
 
 ### Modification des types
@@ -328,7 +296,6 @@ Voici la liste des préfixes autorisés :
 - (string) : modification en string
 - (array) : modification en array
 - (object) : modification en object
-- (unset) : modification en NULL
 
 ## Fonctions nommées & anonymes
 
@@ -336,17 +303,27 @@ Une fonction n'a pas besoin d'être définie avant d'être utilisée. Sauf si vo
 
 Vous pouvez définir une fonction dans une fonction.
 
+```php
+
+add( 1,2);
+
+function add(int $a ,int $b):int{
+    return $a + $b ;
+}
+
+```
+
 ### Typage des arguments et du retour d'une fonction
 
 Nous pouvons également typer les arguments ainsi que les valeurs de retour. Vous pouvez également déclarer un ensemble de types en les séparant par une barre verticale, le caractère "pipe" : | .
 
 ```php
 
+add( 1,2);
+
 function add(int $a ,int $b):int{
     return $a + $b ;
 }
-
-add( 1,2);
 
 function merge( int | array $a, int $b) : int | array {
     if( !is_array($a) )
