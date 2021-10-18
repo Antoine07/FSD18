@@ -66,9 +66,10 @@ Exemple de contexte définissant une portée spécifique :
 $a = 1; /* portée globale */
 
 // portée spécifique
+// La variable $a n'est pas accessible dans la fonction qui définit un scope <=> enceinte fermée
 function foo()
 { 
-    echo $a; /* portée locale */
+    echo $a; /* portée locale, variable non définie */
 }
 
 foo();
@@ -94,7 +95,7 @@ const ANIMALS = ['dog', 'cat', 'bird'];
 
 // n'importe où dans le script
 function foo(){
-    define('ANIMALS_BIS', ['dog', 'cat', 'bird']);
+   var_dump(ANIMALS); // on a accès avec les constantes dans tous les scopes
 }
 ```
 
@@ -136,7 +137,18 @@ function increment_static()
 
 ### Exercice suite de fibonacci
 
-Utilisez le concept de variable statique et implémentez une fonction fibo récursive permettant de calculer les valeurs de la suite de Fibonacci jusqu'au rang N.
+Utilisez le concept de variable statique et implémentez une fonction fibo permettant de calculer les valeurs de la suite de Fibonacci jusqu'au rang N.
+
+Chaque fois que l'on appelera cette fonction on affichera une nouvelle valeur de la suite de Fibonacci.
+
+1,1,2,3,5,8,13,21,34, ...
+
+1
+1
+2 = 1 + 1
+3 = 1 + 2
+5 = 2 + 3
+8 = 3 + 5
 
 ```text
 rang 0 -> 0
@@ -147,6 +159,40 @@ rang 4 -> 3
 rang 5 -> 5
 ...
 ```
+
+## Correction
+
+```php
+<?php
+
+function fibo()
+{
+    static $a = 0, $b = 1; // chaque appel garde la mémoire des valeurs précédentes
+
+    // 0 1 1 2 3 5
+    [$a, $b] = [$b, $a]; // permutation des valeurs
+    $b = $a + $b; // terme suivant de la suite
+
+    return $b;
+}
+
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+```
+
+
 
 ## Les types 
 
