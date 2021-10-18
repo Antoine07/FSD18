@@ -137,7 +137,18 @@ function increment_static()
 
 ### Exercice suite de fibonacci
 
-Utilisez le concept de variable statique et implémentez une fonction fibo récursive permettant de calculer les valeurs de la suite de Fibonacci jusqu'au rang N.
+Utilisez le concept de variable statique et implémentez une fonction fibo permettant de calculer les valeurs de la suite de Fibonacci jusqu'au rang N.
+
+Chaque fois que l'on appelera cette fonction on affichera une nouvelle valeur de la suite de Fibonacci.
+
+1,1,2,3,5,8,13,21,34, ...
+
+1
+1
+2 = 1 + 1
+3 = 1 + 2
+5 = 2 + 3
+8 = 3 + 5
 
 ```text
 rang 0 -> 0
