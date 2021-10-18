@@ -66,9 +66,10 @@ Exemple de contexte définissant une portée spécifique :
 $a = 1; /* portée globale */
 
 // portée spécifique
+// La variable $a n'est pas accessible dans la fonction qui définit un scope <=> enceinte fermée
 function foo()
 { 
-    echo $a; /* portée locale */
+    echo $a; /* portée locale, variable non définie */
 }
 
 foo();
