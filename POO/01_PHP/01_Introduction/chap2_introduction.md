@@ -345,25 +345,6 @@ function foo(int $a , array $numbers, int $c):void{
 foo( numbers:[1, 2, 3], a: 2, c: 8);
 ```
 
-### Exercice split_array 
-
-Créez une fonction qui prend en argument un tableau de nombres et une valeur entière donnant la position pour spliter le tableau en deux. Si la valeur de la position est supérieure à la longueur du tableau, retournez le.
-
-Vous pouvez utiliser la fonction array_shift de PHP pour dépiler le tableau.
-
-```php
-split_array(numbers: [4,6,9, 17], pos : 2);
-// [ [4,6,9] , [17] ]
-```
-
-### Exercice mapped 
-
-Créez une fonction mapped avec trois arguments glue, array et symbol. Voyez l'exemple ci-dessous. Elle permettra de rassembler les clés et les valeurs dans une chaîne de caractères.
-
-```php
-mapped(numbers: ['x' => 1,'y' => 2,'z' => 3,'t' => 7], glue : ', ', symbol : "=");
-// x = 1, y = 2, z = 3, t = 7
-```
 
 ### Exercice zip 
 
