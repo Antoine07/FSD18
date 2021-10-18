@@ -179,7 +179,7 @@ class Car{
     }
 }
 
-$car02 = new Car;
+$car = new Car;
 ```
 
 ## Single Responsability
