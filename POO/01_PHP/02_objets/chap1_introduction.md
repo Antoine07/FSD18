@@ -60,9 +60,54 @@ Un objet est une instance de classe, c'est une variable dans le script courant.
 
 Si un membre de la classe est privé il est impossible d'y accéder à l'extérieur de la classe, c'est-à-dire à partir de l'objet dans le script courant.
 
+```text
+
+- private
++ public
+# protected visibilité non accessible dans le script courant
+
+```
+
 <img src="../images/visibility.png"
      alt="visibility"
      style="margin-right: 10px;" width="500" />
+     
+### Exemples 
+
+```php
+<?php
+
+class Persona{
+    // les attributs de la classe, les variables de la classe
+    // attention variable privée => impossible de les atteindre dans le script courant
+    private int $force;
+    private string $secret;
+    public float $age = 100;
+    
+    // n'initialiser les variables de la classe
+    public function __construct(
+       int $force, 
+       string $secret = "my secret" // paramètre facultatif 
+   ){
+       $this->force = $force;
+       $this->secret = $secret;
+   }
+}
+
+$hydra = new Persona(force: 10);
+$libelle = new Persona(force: 2);
+$dalinda = new Persona(force: 8);
+
+// Un attribut 
+echo $dalinda->age;
+
+// ICI une variable publique peut muter (changer) dans le script courant (à l'exéterieur de la classe)
+// Attention donc à cela car, vous ne maîtrisez plus les données qui vont être enregistrer dans l'objet
+$dalinda->age = -100;
+
+// Un attribut 
+echo $dalinda->age;
+```
 
 ### Méta-variable $this
 
