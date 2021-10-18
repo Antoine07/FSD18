@@ -95,7 +95,7 @@ const ANIMALS = ['dog', 'cat', 'bird'];
 
 // n'importe où dans le script
 function foo(){
-    define('ANIMALS_BIS', ['dog', 'cat', 'bird']);
+   var_dump(ANIMALS); // on a accès avec les constantes dans tous les scopes
 }
 ```
 
@@ -159,6 +159,40 @@ rang 4 -> 3
 rang 5 -> 5
 ...
 ```
+
+## Correction
+
+```php
+<?php
+
+function fibo()
+{
+    static $a = 0, $b = 1; // chaque appel garde la mémoire des valeurs précédentes
+
+    // 0 1 1 2 3 5
+    [$a, $b] = [$b, $a]; // permutation des valeurs
+    $b = $a + $b; // terme suivant de la suite
+
+    return $b;
+}
+
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+echo fibo();
+echo "\n";
+```
+
+
 
 ## Les types 
 
