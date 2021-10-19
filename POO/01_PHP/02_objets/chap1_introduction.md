@@ -212,6 +212,12 @@ $operation = [ [11, 2], ["+"] ] ;
 $calculator->result($operation);
 ```
 
+Questions facultatives 
+
+1. Ajoutez le modulo dans les opérateurs. 
+
+2. Créez une variable de classe total pour garder le total en mémoire.
+
 ### Principe de l’héritage
 
 Pour faire de l’héritage vous devez appliquer le principe suivant :une classe étendue doit être une sorte de ou est un.
