@@ -212,7 +212,6 @@ $operation = [ [11, 2], ["+"] ] ;
 $calculator->result($operation);
 ```
 
-
 ### Principe de l’héritage
 
 Pour faire de l’héritage vous devez appliquer le principe suivant :une classe étendue doit être une sorte de ou est un.
@@ -224,6 +223,24 @@ Si vous n’appliquez pas ce principe vous ne faites pas d’héritage au sens s
 <img src="../images/heritage.png"
      alt="heritage"
      style="margin-right: 10px;" width="300" />
+
+### 01 Exercice Square
+
+Définissez une Rectangle et une classe Square, cette dernière classe hérite de la classe Rectangle.
+
+La classe Rectangle et Square possèdent la spécificité (méthode) de pouvoir calculer leur périmètre.
+
+### 02 Exercice 
+
+Créez une classe Product et une classe Bike qui hérite de Product. La classe Bike possèdera les spécialisations suivantes :
+
+- Une méthode définissant le type de vélo
+
+- Une méthode permettant de définir un numéro unique identifiant le vélo.
+
+- Commander 5 produits et appliquez une promo de 10% sur l'ensemble des produits commandés.
+
+*Vous devez organiser cet exercice dans un dossier Shop dans lequel vous placerez vos deux classes ainsi qu'un fichier app.php permettant de faire les scripts.*
 
 ## traits
 
