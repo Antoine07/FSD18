@@ -284,6 +284,25 @@ $square->perimeter();
 
 ```
 
+### Correction
+
+Remarques : attention au hard coding, ce sont des valeurs qui sont écrites directement elles ne peuvent pas être facilement changées à moins de changer le code de la classe. Passez par des constantes de classe ou variables de classe pour les définir.
+
+```php
+class Rectangle{
+    // ... DU CODE AVANT
+
+    public function perimeter(): float
+    {
+
+        // HARD CODING pour la précision faites au moins une variable de classe ou une constante
+        // return round(2 * ($this->w + $this->h), 2);
+
+        return round(2 * ($this->w + $this->h), self::PRECISION);
+    }
+}
+```
+
 ### 02 Exercice 
 
 Créez une classe Product et une classe Bike qui hérite de Product. La classe Bike possèdera les spécialisations suivantes :
