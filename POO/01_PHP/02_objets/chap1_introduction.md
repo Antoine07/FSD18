@@ -232,9 +232,17 @@ Si vous n’appliquez pas ce principe vous ne faites pas d’héritage au sens s
 
 ### 01 Exercice Square
 
-Définissez une Rectangle et une classe Square, cette dernière classe hérite de la classe Rectangle.
+Définissez un Rectangle et une classe Square, cette dernière classe hérite de la classe Rectangle. La méthode perimeter est définie (implémentée) dans la classe Rectangle.
 
-La classe Rectangle et Square possèdent la spécificité (méthode) de pouvoir calculer leur périmètre.
+Cette méthode permet de calculer le périmètre d'un carré ou d'un rectangle. Essayez de factoriser les plus possibles les attributs et méthodes dans la classe mère.
+
+```php
+
+$square = new Square( ... ) ; // définissez les valeurs de votre carré à l'instanciation de ce dernier.
+
+$square->perimeter();
+
+```
 
 ### 02 Exercice 
 
