@@ -230,6 +230,46 @@ Si vous n’appliquez pas ce principe vous ne faites pas d’héritage au sens s
      alt="heritage"
      style="margin-right: 10px;" width="300" />
 
+
+## Le constructeur dans l'héritage
+
+Voyez l'exemple de code ci-dessous 
+
+```php
+
+class Product{
+    private $name = "productName"; // non étendu
+    protected $ref;
+
+    public function __construct(string $name , string $ref = "00000" )
+    {
+        $this->name = $name;
+        $this->ref = $ref;
+    }
+}
+
+class Book extends Product{
+    protected $ref = "b0001"; // redéfinir 
+
+    // surcharge du constructeur 
+    public function __construct(string $name , string $ref = "00000" )
+    {   
+        // On appelle le constructeur dans la classe mère pour lui passer des valeurs
+        parent::__construct(name : $name, ref: $ref); 
+    }
+
+    public function info(){
+        var_dump($this->ref);
+        //var_dump($this->name); // impossible on n'y a pas accès car private 
+    }
+}
+
+// SI VOUS NE REDEFINISSEZ PAS LE CONSTRUCTEUR vous êtes obligé de lui passer des valeurs sachant que ce dernier est définie dans la classe mère
+$book = new Book(name : "La route", ref: "b0001");
+
+var_dump($book);
+```
+
 ### 01 Exercice Square
 
 Définissez une Rectangle et une classe Square, cette dernière classe hérite de la classe Rectangle.
