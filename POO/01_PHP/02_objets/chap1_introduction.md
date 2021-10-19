@@ -205,7 +205,7 @@ Créez une classe Calculator. Cette classe implémentera les spécificités suiv
 Implémentez maintenant une calculatrice qui prend une expression et calcul celle-ci. L'expression ou une opération sera passée sous forme d'un tableau de tableau comme suit :
 
 ```php
-$calculator = new Calculator;
+$calculator = new ExpressionCalculator;
 
 $operation = [ [11, 2], ["+"] ] ;
 
