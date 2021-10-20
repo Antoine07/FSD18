@@ -2,7 +2,7 @@
 
 class ReadFile{
     private string $fileName;
-    private string $resource ;
+    private  $resource ;
 
     public function __construct(string $fileName)
     {
@@ -13,5 +13,11 @@ class ReadFile{
         $this->resource = fopen($this->fileName, "r");
 
         return fread($this->resource, filesize($this->fileName) ) ;
+    }
+
+    public function __destruct()
+    {
+        var_dump("DESTRUCTOR");
+        fclose($this->resource); // fermeture du fichier qui a été ouvert par la méthode read
     }
 }
