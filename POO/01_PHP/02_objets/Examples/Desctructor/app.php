@@ -4,4 +4,7 @@ spl_autoload_register(function ($className) {
     require_once $className . '.php';
 });
 
-$destructor = new 
+$readFile = new ReadFile("./data.txt");
+
+$readFile->read();
+
