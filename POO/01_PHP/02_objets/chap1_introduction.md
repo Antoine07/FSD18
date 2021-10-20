@@ -335,36 +335,34 @@ $bike = new Bike('brompton', 1500);
 
 Remarque : Symfony, Laravel etc utilisent un auto-loader PSR (PHP Standard Recomandation)
 
-
 ### Exercice le plus grand et nombres spécifiques
 
-Créez une classe SearchNumber. Organisez l'exercice avec un auto-loader, même si ici vous n'avez qu'une seule classe. Placez la classe SearchNumber dans un dossier src. Et créez le fichier app.php à la racine du projet.
+Créez une classe **SearchNumber**. Organisez l'exercice avec un auto-loader, même si ici vous n'avez qu'une seule classe. Placez la classe SearchNumber dans un dossier src. Et créez le fichier app.php à la racine du projet.
 
 ```text
 Search/
-    src/
-        SearchNumber.php
-    app.php
+    src/     <-- classes de l'application
+        SearchNumber.php  
+    app.php  <-- Bootstrap fichier d'amorçage de l'application, ici on "testera" le code de l'App
 ```
 
 1. Créez une méthode permettant d'ajouter une liste de nombre(s) dans votre classe.
 
-2. Créez une méthode biggest elle retournera le nombre le plus grand de la liste ajoutée dans votre classe ou une exception.
+2. Créez une méthode biggest, elle retournera le nombre le plus grand de la liste de nombre(s) ajoutée dans votre classe ou une exception.
 
-3. Créez la méthode parity, elle possède un argument et retourne tous les nombres ayant la parité précisé par l'argument.
+3. Créez la méthode parity, elle possède un argument et retourne tous les nombres ayant la parité précisée par l'argument de cette méthode.
 
 ```php
 // Dans le fichier app.php
 
 // ...
 
-$search->biggest();
+$search->biggest(); // le plus grand élément de la liste
 $search->parity(2); // retourne tous les nombres pairs dans une liste
 $search->parity(7); // retourne tous les nombres multiple de 7 dans une liste
-
 ```
 
-## traits
+## Introductio  traits
 
 C'est une méthode pour réutiliser du code en PHP dans le contexte de l'héritage simple. Une classe peut utiliser plusieurs traits.
 
