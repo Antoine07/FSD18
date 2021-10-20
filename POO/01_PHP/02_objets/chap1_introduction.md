@@ -303,17 +303,17 @@ class Rectangle{
 }
 ```
 
-### 02 Exercice 
+### 02 Exercice Cart
 
 Créez une classe Product et une classe Bike qui hérite de Product. La classe Bike possèdera les spécialisations suivantes :
 
-- Une méthode définissant le type de vélo
+- Une méthode définissant le type de vélo.
 
 - Une méthode permettant de définir un numéro unique identifiant le vélo.
 
-- Commander 5 produits et appliquez une promo de 10% sur l'ensemble des produits commandés.
+- Commander 5 produits et appliquez une promo de 10% sur l'ensemble des produits commandés. Chaque produit est défini avec son nom et prix en HT.
 
-*Vous devez organiser cet exercice dans un dossier Shop dans lequel vous placerez vos deux classes ainsi qu'un fichier app.php permettant de faire les scripts.*
+*Vous devez organiser cet exercice dans un dossier Shop dans lequel vous créez vos deux classes ainsi qu'un fichier app.php permettant de faire les scripts pour tester la logique métier. Pensez dans cet objectif à importer correctement vos classes uniquement dans le fichier app.php.*
 
 ## traits
 
