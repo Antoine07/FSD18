@@ -319,6 +319,8 @@ Créez une classe Product et une classe Bike qui hérite de Product. La classe B
 
 Un autoloader permet d'auto-charger des classes. la fonctionn spl_autoload_register s'exécutera lorsque PHP ne trouvera pas la définition de la classe dans le fichier. Vous pouvez l'utiliser pour définir votre auto-loader, respectez la convention classique pour les applications PHP : un fichier par classe et le fichier porte le nom de la classe.
 
+La fonction spl_autoload_register attend un paramètre qui est une fonction anonyme ayant un paramètre. Ce dernier correspond au nom de la classe inconnue dans le script.
+
 ```php
 spl_autoload_register(function($className){
 
@@ -337,18 +339,18 @@ Remarque : Symfony, Laravel etc utilisent un auto-loader PSR (PHP Standard Recom
 
 ### Exercice le plus grand et nombres spécifiques
 
-Créez une classe **SearchNumber**. Organisez l'exercice avec un auto-loader, même si ici vous n'avez qu'une seule classe. Placez la classe SearchNumber dans un dossier src. Et créez le fichier app.php à la racine du projet.
+Créez une classe **SearchNumber**. Organisez l'exercice avec un auto-loader, même si ici vous n'avez qu'une seule classe dans le projet. Placez la classe SearchNumber dans un dossier src. Et créez le fichier app.php à la racine du projet.
 
 ```text
 Search/
     src/     <-- classes de l'application
         SearchNumber.php  
-    app.php  <-- Bootstrap fichier d'amorçage de l'application, ici on "testera" le code de l'App
+    app.php  <-- (racine du projet) Bootstrap fichier d'amorçage de l'application, ici on "testera" le code de l'App
 ```
 
 1. Créez une méthode permettant d'ajouter une liste de nombre(s) dans votre classe.
 
-2. Créez une méthode biggest, elle retournera le nombre le plus grand de la liste de nombre(s) ajoutée dans votre classe ou une exception.
+2. Créez une méthode biggest, elle retournera le plus grand nombre de la liste  ajoutée dans votre classe ou une exception.
 
 3. Créez la méthode parity, elle possède un argument et retourne tous les nombres ayant la parité précisée par l'argument de cette méthode.
 
@@ -361,6 +363,89 @@ $search->biggest(); // le plus grand élément de la liste
 $search->parity(2); // retourne tous les nombres pairs dans une liste
 $search->parity(7); // retourne tous les nombres multiple de 7 dans une liste
 ```
+
+## Méthodes magiques
+
+Les méthodes magiques sont appelées automatiquement lors d'un événement particulier. Dans la suite on en présente quelques unes. Mais celles que l'on utilisera le plus sont: 
+
+- __construct
+
+- __set
+
+```php
+class Product{
+    private float $price;
+    private string $name;
+
+    public function __set($name, $value) {
+        // On vérifie à l'intérieur de la classe que la propriété existe
+        if (property_exists($this, $name)) {
+            $this->$name = $value;
+        }
+    }
+}
+
+$product->price = .5;
+$product->name = "apple";
+ ```
+
+- __get
+
+```php
+class Product{
+    private float $price;
+    private string $name;
+
+    public function __get($name) {
+        // On vérifie à l'intérieur de la classe que la propriété existe
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+    }
+}
+
+$product->price = .5;
+$product->name = "apple";
+
+- __call
+
+*Nous ne la verront pas dans le cadre de ce cours.*
+
+- __toString, si vous faites un echo ou print sur l'objet cette méthode sera appelée
+
+```php
+class Bar{
+ public function __toString() {
+    return "<p>un message</p>";
+ }
+}
+
+echo (new Bar);
+```
+
+- __destruct
+
+C'est une méthode appelée automatiquement lors de la destruction de l'objet: •soit en détruisant l'objet, c'est-à-dire en l'effaçant de la mémoire 
+
+```php
+unset($objet)
+```
+
+soit à la fin du script, dans ce cas c'est PHP qui efface tout de la mémoire.
+
+## Surcharge 
+
+- def surcharge
+
+Attention, la notion de surcharge en PHP est différente de celle de la plupart des langages orientés
+objets. Dans les autres langages elle définit la possibilité d'avoir plusieurs méthodes portant le
+même nom, mais avec un nombre d'arguments différents pour chacune de ces méthodes. En PHP si
+on fait cela, on aura une erreur fatal, car on ne peut pas redéfinir la même méthode dans la même
+classe, même principe pour les fonctions, les constantes ou la classe elle-même dans le script
+courant.
+
+En PHP la surcharge magique ce fait lorsqu'on essaye d'appeler dans le script courant un attribut ou
+une méthode de la classe qui n'existe pas ou qui est privé (ou protégé que l'on verra plus loin).
 
 ## Introductio  traits
 
@@ -390,208 +475,4 @@ $o->hello();
 $o->word();
 $o->exclamation();
 // Hello World !
-```
-
-### Résolution de conflits
-
-Deux traits identiques dans une même classe lève une erreure fatale. Pour résoudre un conflit entre deux traits il faut utiliser l'opérateur **insteadof**.
-
-```php
-trait A {
-    public function smallTalk() {
-        echo 'a';
-    }
-    public function bigTalk() {
-        echo 'A';
-    }
-}
-
-trait B {
-    public function smallTalk() {
-        echo 'b';
-    }
-    public function bigTalk() {
-        echo 'B';
-    }
-}
-
-class Talker {
-    use A, B {
-        B::smallTalk insteadof A;
-        A::bigTalk insteadof B;
-    }
-}
-``` 
-
-### Changer la visibilité des méthodes 
-
-En utilisant la syntaxe as, vous pouvez aussi ajuster la visibilité de la méthode dans la classe qui l'utilise. Les méthodes privée ne peuvent être modifiées. Une classe peut implémenter plusieurs interfaces.
-
-```php 
-trait HelloWorld {
-    protected function sayHello() {
-        echo 'Hello World!';
-    }
-}
-
-// Modification de la visibilité de la méthode sayHello protected => public possible
-class A {
-    use HelloWorld { sayHello as public; }
-}
-
-$b = new A;
-
-echo $b->sayHello();
-
-```
-
-## Héritage 
-
-L’héritage permet de factoriser un ensemble de méthodes et d’attributs dans une classe mère que des classes filles peuvent partager.
-
-Les classes filles seront spécialisées par rapport à la classe mère. Par exemple une classe Product mère et une classe Stylo fille, la classe Stylo est dite spécialisée par rapport à la classe Product. La classe Stylo possédera plus de spécificités que la classe Product.
-
-La relation de dépendance entre une classe mère et une classe fille est très forte. On parlera de couplage fort. En effet, pour instancier la classe étendue il faut que la classe mère soit définie dans le script courant.
-
-L’héritage multiple n’existe pas en PHP, vous ne pouvez hériter que d’une seule classe à la fois.
-
-
-## Interface (rappel)
-
-Les interfaces objet vous permettent de définir des méthodes publiques que vos classes devront implémentées.
-
-```php
-interface iTemplate
-{
-    public function setVariable($name, $var);
-    public function getHtml($template);
-}
-class Template implements iTemplate
-{
-    private $vars = array();
-
-    public function setVariable($name, $var)
-    {
-        $this->vars[$name] = $var;
-    }
-
-    public function getHtml($template)
-    {
-        foreach($this->vars as $name => $value) {
-            $template = str_replace('{' . $name . '}', $value, $template);
-        }
-
-        return $template;
-    }
-}
-```
-
-## TP Yam 
-
-Vous allez créer un petit composant qui permet de lancer 5 dés pour jouer au Yam. Il n'y aura qu'un seul joueur dans l'application et nous testerons que le lancer de 5 dés (en même temps). Nous allons faire des statistiques sur les différentes combinaisons du jeu. Vous ne testerez que certaines combinaisons de Yam.
-
-Pour compter le nombre de combinaisons vous lancerez plusieurs les 5 dés. Par exemple sur 50 tests qui lance 1 fois 5 dés en même temps on a trouvé :
-
-- Brelan : 2 (trois dés identiques)
-
-- Carré : 1 (4 dés indentiques)
-
-- Double paire : 4 (deux dés identiques X 2 les paires sont des dés différents )
-
-- Yam : 2 (5 dés identiques)
-
-Créez autant de classe que nécessaire pour implémenter ce composant.
-
-## TP Queue
-
-Implémentez une Queue en définissant une classe. Voici comment dans le script courant vous devez appeler votre code pour ajouter un élément dans la queue et récupérer le premier élément de la queue.
-
-FIFO (firts In first out)
-
-```php
-$queue = new Queue();
-$queue->push(1);
-$queue->push(2);
-$queue->push(3);
-$queue->pop(); // affiche 1
-$queue->clear(); // retire tous les éléments de la queue
-```
-
-Facultatif. Votre Queue peut implémenter l'interface ArrayAccess.
-
-```php
-class Obj implements ArrayAccess {
-
-    public function __construct(
-        private array $container = [
-             "un"    => 1,
-            "deux"  => 2,
-            "trois" => 3,
-        ]
-    ) {}
-
-    public function offsetSet($offset, $value) {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetExists($offset) {
-        return isset($this->container[$offset]);
-    }
-
-    public function offsetUnset($offset) {
-        unset($this->container[$offset]);
-    }
-
-    public function offsetGet($offset) {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-}
-
-$obj = new Obj;
-
-var_dump($obj["deux"] ?? 'no exist'); // méthode offsetExists dans la classe
-unset($obj["deux"]); // supprime l'élément  // méthode offsetUnset exécutée
-var_dump(?? $obj["deux"] 'no exist');
-$obj["deux"] = "Une valeur";
-var_dump($obj["deux"]);
-$obj[] = 'Ajout 1';
-$obj[] = 'Ajout 2';
-$obj[] = 'Ajout 3';
-print_r($obj);
-```
-
-## TP Exercice Button & Lamp
-
-Imaginez une lampe dans votre salon. Décomposez celle-ci en deux entités : un Button et une Lamp. Vous ferez également un schéma sur papier pour vous représenter les relations entre ces deux entités (facultatif).
-
-```php
-$lamp= new Button(new Lamp);
-```
-
-Puis implémentez le déclenchement lumière alumé/éteint.
-
-```php
-echo $lamp->switchDevice(); // turn on
-echo $lamp->switchDevice(); // turn off
-echo $lamp->switchDevice(); // turn on
-echo $lamp->switchDevice(); // turn off
-```
-
-## TP exercices Letter & Console
-
-Créez deux classes Letter et Console. La première classe génère les lettres de l'alphabet et la deuxième affiche le contenu d'un tableau de dimension 1 dans le terminal.
-
-La méthode generate de la classe Letter génère 10 lettres aléatoirement de l'alphabet et retourne ces lettres dans un tableau. La show affiche en console le résultat.
-
-```php
-$letter = new Letter();
-$console = new Console();
-
-$alphabet = $letter->generate(10);
-
-$console->show($alphabet);
 ```
