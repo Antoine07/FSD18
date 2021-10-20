@@ -315,6 +315,55 @@ Créez une classe Product et une classe Bike qui hérite de Product. La classe B
 
 *Vous devez organiser cet exercice dans un dossier Shop dans lequel vous créez vos deux classes ainsi qu'un fichier app.php permettant de faire les scripts pour tester la logique métier. Pensez dans cet objectif à importer correctement vos classes uniquement dans le fichier app.php.*
 
+## Introduction  Autoloader 
+
+Un autoloader permet d'auto-charger des classes. la fonctionn spl_autoload_register s'exécutera lorsque PHP ne trouvera pas la définition de la classe dans le fichier. Vous pouvez l'utiliser pour définir votre auto-loader, respectez la convention classique pour les applications PHP : un fichier par classe et le fichier porte le nom de la classe.
+
+```php
+spl_autoload_register(function($className){
+
+    // le nom de la classe = au nom du fichier
+    require_once $className . '.php' ;
+});
+
+$bike = new Bike('brompton', 1500);
+```
+
+1. C'est évidement plus portable (moins de complication pour gérer les dépendances).
+
+2. On gagne en optimisation d'exécution, car seulement ce qui est nécessaire à l'application sera inclu par votre auto-loader.
+
+Remarque : Symfony, Laravel etc utilisent un auto-loader PSR (PHP Standard Recomandation)
+
+
+### Exercice le plus grand et nombres spécifiques
+
+Créez une classe SearchNumber. Organisez l'exercice avec un auto-loader, même si ici vous n'avez qu'une seule classe. Placez la classe SearchNumber dans un dossier src. Et créez le fichier app.php à la racine du projet.
+
+```text
+Search/
+    src/
+        SearchNumber.php
+    app.php
+```
+
+1. Créez une méthode permettant d'ajouter une liste de nombre(s) dans votre classe.
+
+2. Créez une méthode biggest elle retournera le nombre le plus grand de la liste ajoutée dans votre classe ou une exception.
+
+3. Créez la méthode parity, elle possède un argument et retourne tous les nombres ayant la parité précisé par l'argument.
+
+```php
+// Dans le fichier app.php
+
+// ...
+
+$search->biggest();
+$search->parity(2); // retourne tous les nombres pairs dans une liste
+$search->parity(7); // retourne tous les nombres multiple de 7 dans une liste
+
+```
+
 ## traits
 
 C'est une méthode pour réutiliser du code en PHP dans le contexte de l'héritage simple. Une classe peut utiliser plusieurs traits.
