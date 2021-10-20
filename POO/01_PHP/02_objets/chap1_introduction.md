@@ -370,7 +370,7 @@ Les méthodes magiques sont appelées automatiquement lors d'un événement part
 
 - __construct
 
-- __set
+- __set  (NE PAS REVISER)
 
 ```php
 class Product{
@@ -389,7 +389,7 @@ $product->price = .5;
 $product->name = "apple";
  ```
 
-- __get
+- __get (NE PAS REVISER)
 
 ```php
 class Product{
@@ -404,10 +404,12 @@ class Product{
     }
 }
 
-$product->price = .5;
-$product->name = "apple";
+// accède à des attributs privés dans le script courant
+$product->price ;
+$product->name ;
+```
 
-- __call
+- __call (NE PAS REVISER)
 
 *Nous ne la verront pas dans le cadre de ce cours.*
 
@@ -425,13 +427,42 @@ echo (new Bar);
 
 - __destruct
 
-C'est une méthode appelée automatiquement lors de la destruction de l'objet: •soit en détruisant l'objet, c'est-à-dire en l'effaçant de la mémoire 
+C'est une méthode appelée automatiquement lors de la destruction de l'objet: 
+
+1. Soit en détruisant l'objet, c'est-à-dire en l'effaçant de la mémoire 
 
 ```php
-unset($objet)
+// suppression de l'objet en mémoire
+unset($objet);
 ```
 
-soit à la fin du script, dans ce cas c'est PHP qui efface tout de la mémoire.
+2. Soit à la fin du script, dans ce cas c'est PHP qui efface tout de la mémoire.
+
+```php
+
+class ReadFile{
+    private string $fileName;
+    private  $resource ;
+
+    public function __construct(string $fileName)
+    {
+        $this->fileName = $fileName;
+    }
+
+    public function read():string{
+        $this->resource = fopen($this->fileName, "r");
+
+        return fread($this->resource, filesize($this->fileName) ) ;
+    }
+
+    // si on supprime l'objet => on fermera la ressource fopen
+    public function __destruct()
+    {
+        var_dump("DESTRUCTOR");
+        fclose($this->resource); // fermeture du fichier qui a été ouvert par la méthode read
+    }
+}
+```
 
 ## Surcharge 
 
