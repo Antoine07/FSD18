@@ -18,6 +18,5 @@ Vous ferez tout dans un seul et même fichier. Et dans une seule et même classe
 
 6. Créez une méthode permettant de "mémoriser" les sommes demandées par la méthode sum dans un tableau.
 
-7. Une fois un nombre entier ajouté vous ne pourrez pas ajouter une deuxième fois ce même nombre. 
-
+7. Une fois un nombre entier ajouté dans la liste de nombre(s), vous ne pourrez pas l'ajouter une deuxième fois.
 
