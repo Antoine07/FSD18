@@ -478,19 +478,23 @@ courant.
 En PHP la surcharge magique ce fait lorsqu'on essaye d'appeler dans le script courant un attribut ou
 une méthode de la classe qui n'existe pas ou qui est privé (ou protégé que l'on verra plus loin).
 
-## Introductio  traits
+## Introduction  traits
 
 C'est une méthode pour réutiliser du code en PHP dans le contexte de l'héritage simple. Une classe peut utiliser plusieurs traits.
 
-Un trait sert à regrouper des fonctionnalités intéressantes, il ne peut pas être instancié. Il s'ajoute à la notion d'héritage qui autorise la composition horizontale des comportements, ou plus exactement l'utilisation de méthodes sans héritage.
+Un trait sert à regrouper des fonctionnalités intéressantes, il ne peut pas être instancié. Il s'ajoute à la notion d'héritage qui autorise la composition horizontale des comportements, ou plus exactement l'utilisation de méthodes sans héritage, qui est une relation verticale forte (spécialisation).
+
+Attention, vous devez continuer à créer un fichier par trait, comme pour les classes. Ils seront également sensibles à l'auto-loader.
+
+### 01 Exemple say Hello World
 
 ```php
 trait showHello {
-    function hello() { echo "Hello " ; }
+    public function hello() { echo "Hello " ; }
 }
 
 trait showWorld {
-    function world() { echo " World " ; }
+    public function world() { echo " World " ; }
 }
 
 class View{
@@ -502,8 +506,33 @@ class View{
 }
 
 $o = new View();
-$o->hello();
-$o->word();
-$o->exclamation();
+$o->hello(); // premier trait
+$o->world(); // deuxième trait
+$o->exclamation(); // une méthode de la classe
 // Hello World !
 ```
+
+### 02 Exemple d'utilisation
+
+Dans l'héritage Product et Bike on pourrait avoir besoin par exemple d'une méthode spécifique dans un contexte particulier (développement d'une boutique de vente en ligne de vélo) dans la classe Bike.
+
+```php
+
+trait addSpecialTax {
+    const SPECIAL_TAX = .05;
+    public function add() { return self::SPECIAL_TAX; }
+}
+
+class Product{
+   // ...
+}
+
+class Bike extends Product{
+    use addSpecialTax;
+    // ...
+
+    public function getPrice():float{
+
+        return $this->price * (1 + $this->addSpecialTax());
+    }
+}
