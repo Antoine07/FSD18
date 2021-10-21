@@ -43,3 +43,5 @@ $mario->setRole($savior);
 1. Créez deux personas un chevalier et un dragon, ces deux personas seront également dans la Scene. Récupérez ces personas dans depuis la Scene et faites-les s'affronter en mode tour par tour.
 
 2. Faites maintenant une classe Game pour mettre en relation les classes et imaginer un schéma UML, à dessiner, cohérent de l'ensemble du jeu.
+
+3. Vérifiez que les personas ne sont pas déjà dans la Scene avant de les lancer dans le jeu tour par tour.
