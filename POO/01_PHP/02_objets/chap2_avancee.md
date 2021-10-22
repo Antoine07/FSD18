@@ -2,19 +2,39 @@
 
 ## Namespace & auto-loader
 
-- Définition 
+- Définition Namespace
 
-Ils représentent un moyen d'encapsuler des éléments classes ou fonctions, à l'instar des dossiers et fichiers.
+Ils représentent un moyen d'encapsuler des éléments comme des classes, des constantes ou des fonctions, à l'instar des dossiers et fichiers qui sont dans leur espace de nom.
+
+```text
+App/
+    Controller/
+        Home.php  <- ce fichier est "encapsulé" dans l'espace de nom de son dossier
+    Model/
+        Home.php
+
+```
 
 Ils permettent de résoudre deux problèmes :
 
-1. Collisions de noms des fonctions ou classes dans le PHP ou dans des librairies tierces.
+1. Collisions de noms des fonctions, constantes ou classes dans le PHP ou dans des librairies tièrces.
 
 2. Ils permettent de réduire les noms à l'aide d'alias de nom.
 
-Par exemple ci-dessous nous encapsulons la classe Post dans un espace de nom Model
+```php
+// app.php
+
+use Model_Home_Blog_Post as post;
+
+```
+
+Par exemple, ci-dessous avec le namespace Model, nous encapsulons la classe Post, la fonction foo et la constante Pass dans un espace.
+
+**Attention, vous devez définir un namespace avant tout autre code PHP dans votre fichier, on écrira un namespace par fichier. Logiquement vous définissez votre namespace tout en haut du fichier dans vos cotes PHP.**
 
 ```php
+<?php
+
 namespace Model;
 
 function foo(){
@@ -28,7 +48,7 @@ class Post{
 }
 ```
 
-Si on doit importer cette classe ailleurs, dans un fichier app.php qui est à la racine, avec le namespace racine nous devrons alors écrire :
+Si on doit importer cette classe ailleurs, dans un fichier app.php qui est à la racine de votre application, fichier sans précision de namespace, précisons que ce fichier aura le **namespace racine**, nous devrons alors écrire :
 
 ```php
 
@@ -40,7 +60,7 @@ Model\foo();
 echo Model\Pass;
 ```
 
-Mais avec un alias nous pourrons écrire :
+On peut aller plus vite à l'aide de l'utilisation d'alias (mot clé as) :
 
 ```php
 
@@ -54,7 +74,7 @@ use Model\Pass as Pass;
 $post = new Post;
 ```
 
-Notez que l'alias ci-dessus est équivalent à, le nom de la classe sous le dernier slash sera le nom de l'alias :
+On peut simplifier l'écriture précédente en ne mentionnant pas les alias, voyez ce qui suit :
 
 ```php
 
@@ -68,33 +88,54 @@ use Model\Pass;
 $post = new Post;
 ```
 
-Vous pouvez également renommer l'alias de la fonction, classe ou constante importée, par exemple pour la fonction foo :
+Vous pouvez également, si vous en avez besoin renommer l'alias d'une fonction, d'uneclasse ou d'une constante importée, par exemple :
 
 ```php
 use Model\foo as f;
 ```
 
+Ceci à deux avantages :
+
+1. On a un nom plus court de la fonction, classe ou constante
+
+2. Evite la collision des noms des fonctions, classes ou constantes.
+
+```php
+<?php
+
+namespace Baz;
+
+use Model\foo as f;
+
+function foo(){
+    echo "foo dans Baz";
+}
+
+foo();
+f();
+```
+
 ## Utilisation pratique
 
-Nous allons voir que les namespaces permettent également de définir un autoloading des classes, constantes ou fonctions très pratique.
+Nous allons voir que les namespaces permettent également de définir un autoloading de classes, constantes ou fonctions très pratique.
 
 Dans les recommandations de la PSR (PHP Standars Recommendations) vous devez construire votre application comme suit :
 
 1. Une classe par fichier portant exactement le même nom de la classe.
 
-2. Les namespaces doivent refléter l'arborescence de la structure des dossiers de la classe.
+2. Les namespaces doivent refléter l'arborescence de la structure des dossiers et fichier de vos classes.
 
-3. Un namesapce de haut niveau peut être/doit être définit. Il permet d'encapsuler une application avec un nom. Voyez comme le nom de votre application qui ne rentre pas dans l'arborescence des dossiers de la classe.
+3. Un namesapce de haut niveau peut être/doit être définit. Il permet d'encapsuler une application avec un nom, il ne sera pas en rapport avec la structure des dossiers/fichiers. Voyez comme le comme le nom de votre application.
 
-4. Le dossier src n'est pas en général namespacé.
+4. Le dossier src n'est pas namespacé.
 
 ### 01 Exemple
 
 ```text
 Shop/
     src/
-        Bike.php     <-- namespace Shop;
-        Product.php  <-- namespace Shop;
+        Bike.php     <-- <?php namespace Shop;
+        Product.php  <-- <?php namespace Shop;
     app.php 
 ```
 
@@ -104,11 +145,11 @@ Shop/
 Shop/
     src/
         Model/
-            Comment.php <-- namespace Shop/Model;
+            Comment.php <-- <?php namespace Shop/Model;
             Blog/
                 Post.php <-- namespace Shop/Blog/Model;
-        Bike.php     <-- namespace Shop;
-        Product.php  <-- namespace Shop;
+        Bike.php     <-- <?php namespace Shop;
+        Product.php  <-- <?php namespace Shop;
     app.php 
 ```
 
@@ -116,9 +157,9 @@ Shop/
 
 Vous allez essayer de mettre en place un autoloader en considérant les namespaces.
 
-Reprennez l'exercice Shop et namespacez les classes Bike et Product avec le namespace Shop de haut niveau en utilisant l'autoloader que nous avons mis en place.
+Reprennez l'exercice Shop et namespacez les classes Bike et Product avec le namespace Shop de haut niveau en utilisant l'autoloader que nous avons mis en place et qu'il faudra adapter aux namepsaces.
 
-Remarque : attention à l'antislash. Vous devez l'échapper dans la chaîne de caractères:
+Remarque : attention à l'antislash. Vous devez l'échapper  si vous le mettez dans une chaîne de caractères :
 
 ```php
 "Shop\\Bike.php";
